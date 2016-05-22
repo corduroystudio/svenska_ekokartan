@@ -1158,6 +1158,7 @@ $(document).ready(function() {
 
         if ( sortedKomResults.length > 10 ) {
             $('#svgArea').css('overflowY', 'scroll');
+            $('#svgArea').css('overflow', '-moz-scrollbars-none');  //remove scrollbars for firefox
             $('#moreResults').show();
         } else {
             $('#svgArea').css('overflowY', 'hidden');
@@ -1692,6 +1693,7 @@ $(document).ready(function() {
         $('#' + clickedIcon).toggleClass('active');  //set active class on clicked icon
         
         $('#svgArea').children().detach();  //empty SVG area
+        $('#svgArea').css('overflow', '-moz-scrollbars-none');  //remove scrollbars for firefox
         d3.selectAll('path.vkvSwe').remove();   //remove vkv map 
         d3.selectAll('text.vkvText').remove();  //remove vkv map legend
         

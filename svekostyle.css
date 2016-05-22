@@ -35,7 +35,6 @@ body {
     margin: 0;
     background-color: #139fbb;
     color: #fff;
-    overflow-y: hidden;
 }
 
 h1 {
@@ -289,7 +288,7 @@ svg#Layer_2 {
 }
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1350px) {
     #contentIntroWrapper {
         left: 20%;
     }
@@ -374,7 +373,7 @@ div#facebook {
     background-size: 25px 25px;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 1350px) {
     div#twitter {
         top: 28px;
         right: 100px;
@@ -506,6 +505,7 @@ g.g > text {
     cursor: pointer;
     height: 320px;
     overflow-y: scroll;
+    overflow: -moz-scrollbars-none;
 }
 
 #svgArea::-webkit-scrollbar {

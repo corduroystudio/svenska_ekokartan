@@ -495,7 +495,8 @@ $(document).ready(function() {
                 offset: '0%'
             })
             .style({
-                'stop-color': 'rgba(255,255,255,0.4)'
+                'stop-color': 'rgb(255,255,255)',
+                'stop-opacity': 0.4
             });
          
          

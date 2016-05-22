@@ -218,57 +218,69 @@
 
 <script>
     
-    if ($(window).height() < 825) {
-        $('#contentIntroWrapper').addClass('smallScreen');
-    }
+        // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
     
-    if ($(window).width() < 960) {
-        $('.loader').text('Denna visualisering ses bäst på större skärmar.');
-        
+    if (isIE || isEdge) {
+        $('.loader').css('width', '300px');
+        $('.loader').text('Var god byt till en modern webbläsare (t.ex. Chrome).');
     } else {
-        $('.loader').css('width', '200px');
-        $('.loader').text('Var god vänta');
-        
-        
-        $(window).on('load', function() {
-            $('.loader').fadeOut(800, function() {
-                $('.waiting').fadeIn(800);
-            });
-        });
+    
+        if ($(window).height() < 825) {
+            $('#contentIntroWrapper').addClass('smallScreen');
+        }
 
-        var firstVisit = true;
+        if ($(window).width() < 960) {
+            $('.loader').text('Denna visualisering ses bäst på större skärmar.');
 
-        $('.waiting').on('click', function() {
+        } else {
+            $('.loader').css('width', '200px');
+            $('.loader').text('Var god vänta');
 
-            if (firstVisit) {
-                $('#Layer_2').toggleClass('ready');      
-                $('#introUI').delay(2000).fadeOut(1000, function() {
-                //Display viz here//
-                $('#svekoApp').fadeIn(800);
-                }); 
-            } else {
-                $('#introUI').fadeOut(1000, function() {
-                //Display viz here//
-                $('#svekoApp').fadeIn(800);
+
+            $(window).on('load', function() {
+                $('.loader').fadeOut(800, function() {
+                    $('.waiting').fadeIn(800);
                 });
-            }
-
-
-            $('#introUI').delay(2000).fadeOut(1000, function() {
-                //Display viz here//
-                $('#svekoApp').fadeIn(800);
-            }); 
-
-        });
-
-        $('.b2Info').on('click', function() {
-            firstVisit = false;
-            $('#svekoApp').fadeOut(800, function() {
-                $('#introUI').fadeIn(800);
             });
 
-        });
-    }
+            var firstVisit = true;
+
+            $('.waiting').on('click', function() {
+
+                if (firstVisit) {
+                    $('#Layer_2').toggleClass('ready');      
+                    $('#introUI').delay(2000).fadeOut(1000, function() {
+                    //Display viz here//
+                    $('#svekoApp').fadeIn(800);
+                    }); 
+                } else {
+                    $('#introUI').fadeOut(1000, function() {
+                    //Display viz here//
+                    $('#svekoApp').fadeIn(800);
+                    });
+                }
+
+
+                $('#introUI').delay(2000).fadeOut(1000, function() {
+                    //Display viz here//
+                    $('#svekoApp').fadeIn(800);
+                }); 
+
+            });
+
+            $('.b2Info').on('click', function() {
+                firstVisit = false;
+                $('#svekoApp').fadeOut(800, function() {
+                    $('#introUI').fadeIn(800);
+                });
+
+            });
+            
+        }   // end check for window width less than 960px
+    }   //end check for IE or Edge
     
     
 </script>

@@ -1,0 +1,927 @@
+/* FONTS */
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=91d9f215-20a3-44f7-8ec3-d5cd9b642b76");
+@font-face{
+font-family:"Botanica";
+src:url("Fonts/ab947e89-fb1b-4b31-a9db-b69097d1c32c.eot?#iefix");
+src:url("Fonts/ab947e89-fb1b-4b31-a9db-b69097d1c32c.eot?#iefix") format("eot"),url("Fonts/11524b8e-4d5a-434e-a60c-0c561069e8e7.woff2") format("woff2"),url("Fonts/0f836b3f-3faf-4f74-b3cd-a6c864217b03.woff") format("woff"),url("Fonts/fa3d9281-fbb3-4229-9957-42425af34849.ttf") format("truetype"),url("Fonts/26afa31e-4ca2-4cd7-a29d-722ca254a995.svg#26afa31e-4ca2-4cd7-a29d-722ca254a995") format("svg");
+}
+@font-face{
+font-family:"Futura Book";
+src:url("Fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix");
+src:url("Fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix") format("eot"),url("Fonts/8bf38806-3423-4080-b38f-d08542f7e4ac.woff2") format("woff2"),url("Fonts/e2b9cbeb-fa8e-41cd-8a6a-46044b29ba52.woff") format("woff"),url("Fonts/c2a69697-4f06-4764-abd4-625031a84e31.ttf") format("truetype"),url("Fonts/dc423cc1-bf86-415c-bc7d-ad7dde416a34.svg#dc423cc1-bf86-415c-bc7d-ad7dde416a34") format("svg");
+}
+@font-face{
+font-family:"Futura Medium";
+src:url("Fonts/0a41510f-c527-4001-89c5-d66d2c9ed34b.eot?#iefix");
+src:url("Fonts/0a41510f-c527-4001-89c5-d66d2c9ed34b.eot?#iefix") format("eot"),url("Fonts/e17c7943-8db2-4470-9e2a-74a8d01f6776.woff2") format("woff2"),url("Fonts/6c72b0cb-89a1-4da9-8574-9244967bd9d6.woff") format("woff"),url("Fonts/dd79c75a-b0c9-4d70-a5a7-bdde1d5449fd.ttf") format("truetype"),url("Fonts/c35c8eec-24d3-4ed7-9159-df80a008bf54.svg#c35c8eec-24d3-4ed7-9159-df80a008bf54") format("svg");
+}
+@font-face{
+font-family:"Futura Bold";
+src:url("Fonts/87f56fc1-ab05-4355-90af-9e83740663af.eot?#iefix");
+src:url("Fonts/87f56fc1-ab05-4355-90af-9e83740663af.eot?#iefix") format("eot"),url("Fonts/3cf9e1e8-63a2-497f-86ed-6b63d6de1986.woff2") format("woff2"),url("Fonts/184895ac-545b-450b-9d3a-c0a0a7620977.woff") format("woff"),url("Fonts/bf8628d2-1ae0-4645-ba3f-3ce62d8d907c.ttf") format("truetype"),url("Fonts/20073de8-56dd-4e4c-9434-5097c3f2fd28.svg#20073de8-56dd-4e4c-9434-5097c3f2fd28") format("svg");
+}
+@font-face{
+font-family:"Futura Heavy";
+src:url("Fonts/752e3189-96d5-4999-8ae7-c435a470461b.eot?#iefix");
+src:url("Fonts/752e3189-96d5-4999-8ae7-c435a470461b.eot?#iefix") format("eot"),url("Fonts/f3fa9288-dc04-4f75-b949-b06584863c9c.woff2") format("woff2"),url("Fonts/6b1bbd38-7556-4809-a151-88182a37116e.woff") format("woff"),url("Fonts/1f56887e-52d4-4229-b219-513cbef3ff58.ttf") format("truetype"),url("Fonts/33342cd1-a4fd-46e1-a810-aee3d1c24099.svg#33342cd1-a4fd-46e1-a810-aee3d1c24099") format("svg");
+}
+
+
+/* GENERAL STYLE */
+body {
+    font-family: 'Futura Medium';
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background-color: #139fbb;
+    color: #fff;
+    overflow-y: hidden;
+}
+
+h1 {
+    font-family: 'Botanica';
+    font-size: 48px;
+    color: #dcd376;
+}
+
+p.large {
+    font-size: 14px;
+}
+
+#svekoApp {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    margin: 0;
+}
+
+.flexContainer {
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+
+
+/* INTRO STYLING */
+
+#introUI {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #149eba;
+    background-size: cover;
+    z-index: -1;
+}
+#grass {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1c764e;
+    height: 68px;
+}
+
+
+#contentIntroWrapper {
+    color: #fff;
+    position: fixed;
+    left: 10%;
+    top: 25%;
+    width: 500px;
+    z-index: 999;
+}
+
+#contentIntroWrapper.smallScreen {
+    top: 5%;
+}
+
+#contentIntroUI {
+    width: 350px;
+}
+
+
+#contentIntroWrapper > h1 {
+    margin-bottom: 12.5px;
+}
+
+#contentIntroUI span {
+    font-family: 'Futura Heavy';
+}
+
+#contentIntroUI p.source {
+    color: rgba(255,255,255,0.8);
+}
+
+p.source > a {
+    color: #fff;
+}
+
+.waiting, .loader {
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 50px;
+    letter-spacing: 1.2px;
+    width: 200px;
+}
+
+.waiting {
+    color: #fff;
+    display: none;
+    cursor: pointer;
+    border-bottom: 2px solid #fff;
+    width: 115px;
+}
+
+
+svg#Layer_1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 20%;
+    height: 80%;
+    width: 80%;
+}
+svg#Layer_2 {
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    -webkit-backface-visibility: hidden;
+}
+#sunSVG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    overflow-y: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+#infoSVG {
+    height: 25px;
+    width: 25px;
+}
+#info {
+    fill: #fff;
+}
+#Layer_2 {
+    -webkit-animation-name: sunrise;
+            animation-name: sunrise;
+    -webkit-animation-duration: 6s;
+            animation-duration: 6s;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;	
+    -webkit-animation-direction: normal;	
+            animation-direction: normal;
+    -webkit-animation-delay: 0;
+            animation-delay: 0;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes sunrise {
+
+    0% {
+        right: 70%;
+        top: 92.5%;
+        -webkit-transform: rotate(0deg) translate(-200px) rotate(0deg);
+                transform: rotate(0deg) translate(-200px) rotate(0deg);
+    }
+    100% {
+        right: 30%;
+        top: 10%;
+        -webkit-transform: rotate(180deg) translate(-200px) rotate(-180deg);
+                transform: rotate(180deg) translate(-200px) rotate(-180deg);
+    }
+
+}
+
+
+@keyframes sunrise {
+
+    0% {
+        right: 70%;
+        top: 92.5%;
+        -webkit-transform: rotate(0deg) translate(-200px) rotate(0deg);
+                transform: rotate(0deg) translate(-200px) rotate(0deg);
+    }
+    100% {
+        right: 30%;
+        top: 10%;
+        -webkit-transform: rotate(180deg) translate(-200px) rotate(-180deg);
+                transform: rotate(180deg) translate(-200px) rotate(-180deg);
+    }
+
+}
+
+#Layer_2.ready {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation-name: infoBtn;
+            animation-name: infoBtn;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;	
+    -webkit-animation-direction: normal;	
+            animation-direction: normal;
+    -webkit-animation-delay: 0;
+            animation-delay: 0;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes infoBtn {
+    
+    0% {
+        right: 30%;
+        top: 10%;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate(200px);
+                transform: translate(200px);
+    }
+    100% {
+        right: 5%;
+        top: 25px;
+        height: 50px;
+        width: 50px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate(0);
+                transform: translate(0);
+    }
+}
+
+@keyframes infoBtn {
+    
+    0% {
+        right: 30%;
+        top: 10%;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate(200px);
+                transform: translate(200px);
+    }
+    100% {
+        right: 35px;
+        top: 25px;
+        height: 50px;
+        width: 50px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate(0);
+                transform: translate(0);
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+    #contentIntroWrapper {
+        left: 20%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .loader {
+        width: 300px;
+    }
+    #contentIntroWrapper {
+        top: 5%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #contentIntroWrapper {
+        width: 100%;
+    }
+    #contentIntroWrapper > h1 {
+        font-size: 32px;
+    }
+    #contentIntroUI {
+        width: 80%;
+    }
+    p.large {
+        font-size: 12px;   
+    }
+    p.source {
+        font-size: 11px;
+    }
+    .loader {
+        width: 50%;
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* TITLE STYLING */
+
+#titleIntro > p, #titleIntro > h1 {
+    margin: 0 0 25px 0;
+}
+
+
+#svekoApp div.b2Info {
+    font-size: 24px;
+    top: 31px;
+    right: 36px;
+    position: absolute;
+    font-family: 'Futura Heavy';
+    height: 50px;
+    width: 50px;
+    z-index: 999;
+    cursor: pointer;
+    text-align: center;
+}
+
+div#twitter, div#facebook {
+    position: absolute;
+    right: 38.92px;
+    width: 44.15px;
+    height: 44.15px;
+    border-radius: 44.15px;
+    background-color: rgba(255,255,255,0.85);
+}
+
+div#twitter {
+    top: 90px;
+    background-image: url(media/twitter.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 25px 25px;
+}
+
+div#facebook {
+    top: 153px;
+    background-image: url(media/facebook.svg);
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+    background-size: 25px 25px;
+}
+
+@media screen and (max-width: 1160px) {
+    div#twitter {
+        top: 28px;
+        right: 100px;
+    }
+    div#facebook {
+        top: 28px;
+        right: 163px;
+    }
+    .flexContainer {
+        padding-left: 25px;
+    }
+}
+
+
+
+
+/* MAIN VIEW STYLE */
+
+#mainView {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+#mapView, #sideView {
+    height: 600px;
+    padding: 0;
+}
+
+path.sweden {
+    cursor: pointer;
+}
+
+/* MAP VIEW STYLING */ 
+#mapView {
+    background-color: rgba(255,255,255,0.25);
+    width: 45%;
+    min-width: 460px;
+    position: relative;
+}
+
+#legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-family: 'Futura Heavy';
+    font-size: 10px;
+}
+
+#legend > p {
+    width: 40px;
+    margin: 0;
+    padding: 5px 5px 5px 0;
+    text-align: center;
+    background-color: #139fbb;
+    height: 14px;
+}
+
+p#legNa { border-right: 15px solid #f2f2f2; }
+p#leg9 { border-right: 15px solid #cd2027; }
+p#leg19 { border-right: 15px solid #f29e1f; }
+p#leg29 { border-right: 15px solid #f9e010; }
+p#leg39 { border-right: 15px solid #64b245; }
+p#leg49 { border-right: 15px solid #1d754e; }
+
+
+
+#backToSwe {
+    opacity: 0.66;
+}
+
+#backToSwe:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#backToSwe > p, #backToSwe > img {
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Futura Heavy';
+    margin: 0;
+}
+
+
+
+#backToSwe > img {
+    height: 15px;
+    width: 9px;
+    padding-right: 10px;
+    top: 12px;
+    left: 65px;
+}
+
+
+g.g > text {
+    font-family: 'Futura Heavy';
+    font-size: 54px;
+    fill: #fff;
+}
+
+
+
+
+/* SIDE VIEW STYLING */
+#sideView {
+    width: 65%;
+    min-width: 564px;
+}
+
+
+/* GRAPH AREA STYLING */
+#graphArea {
+    height: 425px;
+    position: relative;
+}
+
+#trendGraph, #vkvGraph {
+    position: relative;
+}
+
+#svgArea {
+    padding: 25px 25px 0 50px;
+    position: relative;
+    cursor: pointer;
+    height: 320px;
+    overflow-y: scroll;
+}
+
+#svgArea::-webkit-scrollbar {
+    display: none; 
+}
+
+h4.trend, p#komStatTitle {
+    font-size: 24px;
+    font-family: 'Futura Bold';
+    padding: 0px 25px 25px 50px;
+    text-transform: uppercase;
+    margin: 0;
+    width: 100px;
+}
+
+#sweResult, #lanResult, #kommunResult, #komStatGoal, #komStatResult {
+    position: absolute;
+    font-size: 14px;
+    font-family: 'Futura Heavy';
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: inline;
+}
+
+
+#trendGraph > p.name, #komStatGraph > p.name {
+    font-size: 18px;
+    text-transform: uppercase;
+    width: 100px;
+    position: absolute;
+    font-family: 'Futura Medium';
+    margin: 7px;
+}
+
+#sweResult > p, #lanResult > p, #kommunResult > p, #komStatResult > p, #komStatGoal > p {
+    margin-top: 9px;
+}
+
+#sweResult {
+    top: 0;
+    left: 170px;
+    background-color: #dcd376;
+}
+
+#lanResult {
+    background-color: #a2daf3;
+    top: 0;
+    left: 310px;
+}
+
+#kommunResult {
+    top: 0;
+    left: 520px;
+    background-color: #8ADC76;
+}
+
+#sweden {
+    color: #dcd376;
+    top: 0;
+    left: 210px;
+}
+
+#lanName {
+    color: #a2daf3;
+    top: 0;
+    left: 350px;
+}
+
+#kommunName {
+    color: #8ADC76;
+    top: 0;
+    left: 560px;
+}
+
+#komStatResult {
+    top: 0;
+    left: 220px;
+}
+
+
+#komStatName {
+    top: 0;
+    left: 260px;
+}
+
+#komStatGoal {
+    top: 0;
+    left: 440px;
+    background-color: rgba(255,255,255,0.3);
+}
+
+#komStatGoalName {
+    top: 0;
+    left: 480px;
+}
+
+p#komStatGoalName {
+    font-size: 18px;
+    text-transform: uppercase;
+    width: 200px;
+    position: absolute;
+    font-family: 'Futura Medium';
+    margin: 7px;
+}
+
+
+p#graphYear {
+    position: absolute;
+    top: 20px;
+    left: 125px;
+    font-size: 70px;
+    font-family: 'Futura Heavy';
+    color: #fff;
+    opacity: 0.2;
+    margin: 0;
+}
+
+img#playBtn {
+    position: absolute;
+    top: 120px;
+    left: 285px;
+    display: none;
+}
+
+
+.axis {
+    fill: #fff;
+    font-family: 'Futura Medium';
+    font-size: 14px;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+}
+
+
+.sweLine, .lanLine, .komLine, .activeLine, .activeKomLine {
+    fill: none;
+    stroke-linecap: round;
+}
+.sweLine {
+    stroke: #dbd37e;
+    stroke-width: 3px;
+}
+
+.lanLine {
+    stroke: #a2daf3;
+    opacity: 0.2;
+    stroke-width: 2px;
+}
+
+.komLine {
+    stroke: #8ADC76;
+    opacity: 0.17;
+    stroke-width: 2px;
+}
+
+.activeLine {
+    stroke: #a2daf3;
+    opacity: 1;
+    stroke-width: 3px;
+}
+
+.activeKomLine {
+    stroke: #8ADC76;
+    opacity: 1;
+    stroke-width: 3px;
+}
+
+
+#moreResults {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(19,159,187,0.8);
+    height: 25px;
+    z-index: 999;
+    display: inline-block;
+}
+
+#moreResults > p {
+    color: #d0d2d3;
+    font-family: 'Futura Heavy';
+    padding: 0 0 0 50px;
+    margin: 0;
+    font-size: 14px;
+}
+
+#moreResults > img {
+    width: 15px;
+    height: 9px;
+    position: absolute;
+    bottom: 10px;
+    left: 135px;
+}
+
+
+#vkvGraph > p, #vkvGraph > div {
+    position: absolute;
+    text-transform: uppercase;
+}
+
+#vkvMainTitle {
+    font-size: 24px;
+    font-family: 'Futura Bold';
+    padding: 0px 25px 25px 50px;
+    margin: 0;
+    top: 0;
+    left: 0;    
+}
+
+#sweVkv {
+    font-size: 18px;
+    color: #dbd37e;
+    top: 25px;
+    left: 0;
+    padding-left: 50px;
+}
+
+#prodLegend {
+    top: 0;
+    right: 0;
+    text-align: right;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    width: 165px;
+}
+
+#prodLegend > span {
+    color: #6a213e;
+}
+
+#topBar {
+    z-index: 999;
+    width: 400px;
+    background-color: #139fbb;
+    height: 90px;
+}
+
+p#topListTitle, p#viewKommun, p#viewLandsting {
+    position: absolute;
+    text-transform: uppercase;
+    margin: 0;
+    z-index: 999;
+}
+
+p#topListTitle {
+    font-size: 24px;
+    font-family: 'Futura Bold';
+    top: 0;
+    left: 0;
+    padding-left: 50px;
+}
+
+p#viewKommun, p#viewLandsting {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    top: 40px;
+    cursor: pointer;
+}
+
+p#viewKommun.active, p#viewLandsting.active {
+    color: rgba(255,255,255,1);
+    border-bottom: 2px solid #fff;
+}
+
+p#viewKommun:hover, p#viewLandsting:hover {
+    border-bottom: 2px solid rgba(255,255,255,0.6);
+}
+
+p#viewKommun.active:hover, p#viewLandsting.active:hover {
+    border-bottom: 2px solid rgba(255,255,255,1);
+}
+
+p#viewKommun {
+    left: 50px;
+}
+
+p#viewLandsting {
+    left: 150px;
+}
+
+#searchBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 35px;
+}
+
+#kommunSearch, #landstingSearch {
+    display: none;
+}
+
+#kommunSearch.active, #landstingSearch.active {
+    display: block;
+}
+
+#kommunSearch > input, #landstingSearch > input {
+    width: 245px;
+    height: 35px;
+    padding-left: 5px;
+    background-color: rgba(255,255,255,0.2);
+    border: none;
+    font-family: 'Futura Medium';
+    color: #fff;
+}
+
+#kommunSearch > input:focus, #landstingSearch > input:focus {
+    outline: none;
+    border-bottom: 2px solid #fff;
+}
+
+
+.ui-widget-content {
+    border: none;
+    background: #42B2C9;
+    color: #fff;
+    font-family: 'Futura Medium';
+    font-size: 12px;
+}
+
+li.ui-menu-item: {
+    background-color: #fff;
+    border: none;
+    font-family: 'Futura Heavy';
+}
+
+
+/* STAT AREA STYLING */
+#statArea {
+    height: 175px;
+    background-color: #36ADC5;
+    position: relative;
+    z-index: 998;
+}
+
+#statArea > p.smallHead {
+    text-transform: uppercase;
+    font-family: 'Futura Bold';
+    font-size: 14px;
+    padding: 25px 25px 25px 50px;
+    margin: 0;
+}
+
+
+#trendIcon, #vkvIcon, #komIcon {
+    position: absolute;
+    background: url(media/icon_trend_vkv_kom.png) no-repeat;
+    width: 80px;
+    height: 78px;
+    cursor: pointer;
+}
+
+#trendIcon {
+    top: 50px;
+    left: 130px;
+    background-position: 0 0;
+}
+
+#trendIcon:hover, #trendIcon.active {
+    background-position: 0 -76px;
+}
+
+#vkvIcon {
+    top: 50px;
+    left: 320px;
+    background-position: -77px 0;
+}
+
+#vkvIcon:hover, #vkvIcon.active {
+    background-position: -77px -76px;
+}
+
+#komIcon {
+    top: 50px;
+    left: 510px;
+    background-position: -160px 0;
+}
+
+#komIcon:hover, #komIcon.active {
+    background-position: -160px -76px;
+}
+
+
+
+#trendTitle, #vkvTitle, #komTitle {
+    position: absolute;
+    font-family: 'Futura Bold';
+    font-size: 14px;
+}
+
+#trendTitle {
+    top: 115px;
+    left: 148px;
+}
+
+#vkvTitle {
+    top: 115px;
+    left: 310px;
+}
+
+#komTitle {
+    top: 115px;
+    left: 490px;
+}
+
+
+
+
+
+
+

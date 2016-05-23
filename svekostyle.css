@@ -560,8 +560,8 @@ h4.trend, p#komStatTitle {
 
 #kommunResult {
     top: 0;
-    left: 520px;
-    background-color: #8ADC76;
+    left: 460px;
+    background-color: #8FDC76;
 }
 
 #sweden {
@@ -577,9 +577,9 @@ h4.trend, p#komStatTitle {
 }
 
 #kommunName {
-    color: #8ADC76;
+    color: #8FDC76;
     top: 0;
-    left: 560px;
+    left: 500px;
 }
 
 #komStatResult {
@@ -663,7 +663,7 @@ img#playBtn {
 }
 
 .komLine {
-    stroke: #8ADC76;
+    stroke: #8FDC76;
     opacity: 0.17;
     stroke-width: 2px;
 }
@@ -675,7 +675,7 @@ img#playBtn {
 }
 
 .activeKomLine {
-    stroke: #8ADC76;
+    stroke: #8FDC76;
     opacity: 1;
     stroke-width: 3px;
 }

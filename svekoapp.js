@@ -314,7 +314,7 @@ $(document).ready(function() {
                 }
             });
             
-        if (currentView == 'trend') {
+        if (currentView == 'trend' || mapClick) {
             lanPath
                 .on('click', clicked);
         }
@@ -375,6 +375,7 @@ $(document).ready(function() {
                             for (var j = 0; j < lanKomData.length; j++) {
 
                                 if (lanKomData[j].KOM_IDID == komId) {
+                                   
                                     
                                     //check for null data and update accordingly
                                     if (!isNaN(lanKomData[j]['2015'])) {
@@ -616,6 +617,8 @@ $(document).ready(function() {
             
             var lanName = d.properties.LNNAMN;  //set lanName as clicked lan
             activeLanId = d.properties.LNKOD;   //set lanId as clicked lan id
+            
+            checkLanNameLength(lanName);
 
             //empty arrays to store data and shapes of kommuner in the lan
             lanKommunerData = [];
@@ -665,15 +668,18 @@ $(document).ready(function() {
             d3.selectAll('path.kommun').remove();   //remove all kommuner paths
             d3.selectAll('path.lanLine').remove();  //remove all lan lines in trendgraph
             d3.selectAll('path.activeLine').remove();   //remove all active lines in trendgraph
-            drawActiveLan(activeLan);   //draw active lan in trendgraph
-            drawKommuner(lanKommunerData, lanKommunerShape, activeLanId);   //draw active kom shapes
             
             //check if view is komstat and push active kommuner to bargraph
             if (currentView == 'komStat') {
                 $('#topListGraph').hide();   //hide toplist graph
                 $komStatGraph.show();       //hide komstat graph
                 sortActiveKommuner(activeKom);
+                
+            } else if (currentView == 'trend') { 
+               drawActiveLan(activeLan);   //draw active lan in trendgraph
             }
+            
+            drawKommuner(lanKommunerData, lanKommunerShape, activeLanId);   //draw active kom shapes
         }
     }
     
@@ -848,7 +854,6 @@ $(document).ready(function() {
     
     //draw län result to linegraph 
     function drawLanResults(lanData) {
-
         
         for (var i = 0; i < lanData.length; i ++) {
             
@@ -883,6 +888,8 @@ $(document).ready(function() {
     
     //draw active län result to linegraph
     function drawActiveLan(lanData) {
+        
+        checkLanNameLength(lanData[0].Län);
         
         for (var i = 0; i < lanData.length; i ++) {
             
@@ -983,6 +990,18 @@ $(document).ready(function() {
             
         };
     } //end draw active lan resultat
+    
+    
+    function checkLanNameLength(lanName) {
+        //check for lan name length to adjust kommun name position
+            if (lanName.length > 7 ) {
+                $kommunResult.css('left', '520px');
+                $kommunName.css('left', '560px');
+            } else {
+                $kommunResult.css('left', '460px');
+                $kommunName.css('left', '500px');                                        
+            }
+    }
        
     
     
@@ -1303,23 +1322,6 @@ $(document).ready(function() {
                     height: barHeight - 3,
                     class: 'rectangle'
                     });
-//                .on('mouseenter', function(d, i) {
-//                    if ($('#viewKommun').hasClass('active')) {
-//                        $('path#' + d.KOM_IDID).css('opacity', 1); 
-//                    } else {
-//                        var lanName = d.Län;
-//                        console.log(lanName)
-//                        $('path.sweden').css('opactiy', 0.6);
-//                        $('path#' + lanName).css('opacity', 1);
-//                    }
-//                })
-//                .on('mouseleave', function(d, i) {
-//                   if ($('#viewKommun').hasClass('active')) {
-//                        $('path#' + d.KOM_IDID).css('opacity', 0); 
-//                    } else {
-//                        $('path.sweden').css('opacity', 0.6);
-//                    }
-//                });
 
             rectangle.transition()
                 .duration(800)

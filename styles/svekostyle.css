@@ -359,7 +359,7 @@ div#twitter, div#facebook {
 
 div#twitter {
     top: 90px;
-    background-image: url(media/twitter.svg);
+    background-image: url(../media/twitterswe.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 25px 25px;
@@ -367,7 +367,7 @@ div#twitter {
 
 div#facebook {
     top: 153px;
-    background-image: url(media/facebook.svg);
+    background-image: url(../media/facebook.svg);
     background-repeat: no-repeat;
     background-position: 45% 50%;
     background-size: 25px 25px;
@@ -860,7 +860,7 @@ li.ui-menu-item: {
 
 #trendIcon, #vkvIcon, #komIcon {
     position: absolute;
-    background: url(media/icon_trend_vkv_kom.png) no-repeat;
+    background: url(../media/icon_trend_vkv_kom.png) no-repeat;
     width: 80px;
     height: 78px;
     cursor: pointer;

@@ -608,6 +608,7 @@ $(document).ready(function() {
      //map click function
     function clicked(d) {
         
+        
         //check if the timeline is playing
         if (!isPlaying) {
             
@@ -674,7 +675,7 @@ $(document).ready(function() {
             if (currentView == 'komStat') {
                 $('#topListGraph').hide();   //hide toplist graph
                 $komStatGraph.show();       //hide komstat graph
-                sortActiveKommuner(activeKom);
+                sortActiveKommuner(lanKommunerData);
                 
             } else if (currentView == 'trend') { 
                drawActiveLan(activeLan);   //draw active lan in trendgraph
@@ -1177,7 +1178,7 @@ $(document).ready(function() {
 
         if ( sortedKomResults.length > 10 ) {
             $('#svgArea').css('overflowY', 'scroll');
-            $('#svgArea').css('overflow', '-moz-scrollbars-none');  //remove scrollbars for firefox
+            //$('#svgArea').css('overflow', '-moz-scrollbars-none');  //remove scrollbars for firefox
             $('#moreResults').show();
         } else {
             $('#svgArea').css('overflowY', 'hidden');
@@ -1695,7 +1696,7 @@ $(document).ready(function() {
         $('#' + clickedIcon).toggleClass('active');  //set active class on clicked icon
         
         $('#svgArea').children().detach();  //empty SVG area
-        $('#svgArea').css('overflow', '-moz-scrollbars-none');  //remove scrollbars for firefox
+        d3.selectAll('defs').remove();  //remove defs from svg 
         d3.selectAll('path.vkvSwe').remove();   //remove vkv map 
         d3.selectAll('text.vkvText').remove();  //remove vkv map legend
         
@@ -1781,6 +1782,7 @@ $(document).ready(function() {
         // KOMMUN STATISTIK VIEW //    
         } else if (iconId == 'komIcon') {
             
+            
             currentView = 'komStat';    //update current view
            
             $('#svgArea').css('height', '320px');   //set svgArea height
@@ -1812,7 +1814,8 @@ $(document).ready(function() {
                 d3.selectAll('path.sweden').style('opacity', 0.2);    //show swepath
                 
                 $komStatGraph.show();       //show komstat graph
-                defaultBarChart(activeKom);     //draw bargraph with active kommuner
+                //defaultBarChart(activeKom);     //draw bargraph with active kommuner
+                 defaultBarChart(lanKommunerData);     //draw bargraph with active kommuner
             }
             
         }

@@ -675,7 +675,14 @@ $(document).ready(function() {
             if (currentView == 'komStat') {
                 $('#topListGraph').hide();   //hide toplist graph
                 $komStatGraph.show();       //hide komstat graph
-                sortActiveKommuner(lanKommunerData);
+                
+                var mapKommuner = [];
+                
+                for (var i = 0; i < lanKommunerData.length; i++) {
+                    mapKommuner.push(lanKommunerData[i]);
+                }
+               
+                sortActiveKommuner(mapKommuner);
                 
             } else if (currentView == 'trend') { 
                drawActiveLan(activeLan);   //draw active lan in trendgraph

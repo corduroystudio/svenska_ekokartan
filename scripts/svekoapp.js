@@ -675,13 +675,15 @@ $(document).ready(function() {
             if (currentView == 'komStat') {
                 $('#topListGraph').hide();   //hide toplist graph
                 $komStatGraph.show();       //hide komstat graph
-                
-                var mapKommun = [];
+
+                var mapKommuner = [];
+
 
                 for (var i = 0; i < lanKommunerData.length; i++) {
                     mapKommun.push(lanKommunerData[i]);
                 }
-                sortActiveKommuner(mapKommun);
+
+                sortActiveKommuner(mapKommuner);
 
 
             } else if (currentView == 'trend') {

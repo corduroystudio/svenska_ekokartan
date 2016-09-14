@@ -678,11 +678,13 @@ $(document).ready(function() {
 
                 var mapKommuner = [];
 
+
                 for (var i = 0; i < lanKommunerData.length; i++) {
-                    mapKommuner.push(lanKommunerData[i]);
+                    mapKommun.push(lanKommunerData[i]);
                 }
 
                 sortActiveKommuner(mapKommuner);
+
 
             } else if (currentView == 'trend') {
                drawActiveLan(activeLan);   //draw active lan in trendgraph

@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  
+
     /////////////////////////////////////   VARIABLES     /////////////////////////////////////////
-    
+
     //Initial variables
     var lanDataSorted;
     var kommunDataSorted;
@@ -21,8 +21,8 @@ $(document).ready(function() {
     var vkvLegend;
     var formatPercent = d3.format('%');
 
-    
-    
+
+
     //map colours,
     var nodata = "#f2f2f2";
     var red = "#db031b";
@@ -30,7 +30,7 @@ $(document).ready(function() {
     var yellow = "#fbde00";
     var lightGreen = "#55ab26";
     var darkGreen = "#05673a";
-    
+
     //graph area variables
     var $graphTitle = $('#graphTitle');
     var $sweResult = $('#sweResult');
@@ -40,10 +40,10 @@ $(document).ready(function() {
     var $lanName = $('#lanName');
     var $kommunName = $('#kommunName');
     var $playBtn = $('#playBtn');
-    
+
     var $komStatGraph = $('#komStatGraph');
-    
-    
+
+
     //trend variables
     var lineChartDefaultData;
     var lineChartScaleX;
@@ -58,7 +58,7 @@ $(document).ready(function() {
     var lanKommunerData;
     var lanKommunerShape;
     var activeLanId;
-    
+
     var slider;
     var isPlaying = false;
     var interval;
@@ -68,8 +68,8 @@ $(document).ready(function() {
     var val;
     var timeLegendData;
     var defaultLegendData = [];
-    
-        
+
+
     //komstat variables
     var barChartWidth = 660;
     var barChartHeight = 8200;
@@ -82,8 +82,8 @@ $(document).ready(function() {
             .range([0, 500]);
     var barXAxis;
     var availableSearch;
-    
-    
+
+
     var margin = {
         top: 20,
         right: 20,
@@ -92,33 +92,33 @@ $(document).ready(function() {
     };
     var width = 490;
     var height = 600;
-    
+
     var projection = d3.geo.mercator()
         .center([16, 62.5])
         .scale(1100)
         .translate([width / 2, height / 2]);
-    
-        
+
+
     var geoPath = d3.geo.path()
         .projection(projection);
-   
-    
-    
-//////////////////////////////////////////   INITIAL SETTINGS     /////////////////////////////////////////   
+
+
+
+//////////////////////////////////////////   INITIAL SETTINGS     /////////////////////////////////////////
     $komStatGraph.hide();   //hide kommun statistics graph
     $('#topListGraph').hide();   //hide toplist graph
     $('#vkvGraph').hide();  //hide vkv graph
     $kommunResult.hide();   //hide kommun result
-    $kommunName.hide();     //hide kommun name  
+    $kommunName.hide();     //hide kommun name
     $('#backToSwe').hide(); //hide b2swe navigation
-    
+
     $playBtn.hide();    //hide play button
-        
+
     //set up time slider
-    createSlider(); 
-    playEvents();   
-    
-    
+    createSlider();
+    playEvents();
+
+
     //create map SVG
     var svg = d3.select('#mapView').append('svg')
         .attr({
@@ -126,16 +126,16 @@ $(document).ready(function() {
             height: height,
             id: 'mapSVG'
         });
-    
+
     var g = svg.append('g')
         .attr({
             class: 'g',
             transform: 'translate(' + margin.left + ',' + margin.top + ')'
         });
-    
 
-//////////////////////////////////////////   LOAD DATA     /////////////////////////////////////////  
-    
+
+//////////////////////////////////////////   LOAD DATA     /////////////////////////////////////////
+
     //queue data
     queue()
         .defer(d3.csv, 'data/lan_data.csv', type)
@@ -146,59 +146,59 @@ $(document).ready(function() {
         .defer(d3.json, 'data/swe_shape.geojson')
         .defer(d3.csv, 'data/landsting.csv', ltType)
         .await(pushData);
-    
-    
-    
+
+
+
     //load data
     function pushData(error, lanData, kommunData, kommunShape, lanShape, vkv, sweShape, ltData) {
 
         if (error) throw error;
-        
+
         //push kommun data into new array for full country bargraph
         for (var i = 0; i < kommunData.length; i++) {
             allKomData.push(kommunData[i]);
         }
-        
+
         //sort kommun data
         kommunDataSorted = kommunData.sort(function(a,b) {
             return a.KOM_IDID - b.KOM_IDID;
         });
-        
+
         //sort kommun shape boundaries
         kommunShapeSorted = kommunShape.features.sort(function(a,b) {
             return a.properties.ID - b.properties.ID;
         });
-        
+
         //sort län data
         lanDataSorted = lanData.sort(function(a,b) {
             return a.LNKOD - b.LNKOD;
         });
-        
+
         //sort landsting data
         ltDataSorted = ltData.sort(function(a,b) {
             return a.LNKOD - b.LNKOD;
         });
-        
+
         //push landstingdata into array for bargraph
         for (var i = 0; i < ltData.length; i++) {
             ltDataBarChart.push(ltData[i]);
         }
-        
-        vkvData = vkv;  //update variable with vkv data        
+
+        vkvData = vkv;  //update variable with vkv data
         vkvSweShape = sweShape; //update variable with vkv shape data
         lanShapeData = lanShape;    //update variable with lan shape data
-            
+
         drawSweLan(lanShapeData, lanDataSorted);   //draw lan boundaries
         defaultLineChart();     //run default linechart for trendview
         drawLanResults(lanDataSorted);  //draw lan result lines in trendgraph
         swedenResults();    //draw sweden result in trendgraph
-        
-        
+
+
     };
-     
-      
-    
-    //parse csv data 
+
+
+
+    //parse csv data
     function type(d) {
         d['2015'] = +d['2015'];
         d['2014'] = +d['2014'];
@@ -213,30 +213,30 @@ $(document).ready(function() {
         d.KOM_IDID = +d.KOM_IDID;
         d.LNKOD = +d.LNKOD;
         return d;
-        
+
     } //end type
-    
-    //parse vkv csv data 
+
+    //parse vkv csv data
     function vkvType(d) {
         d.Ekovarde = +d.Ekovarde;
         return d;
-        
+
     } //end vkvType
-    
-    //parse landsting csv data 
+
+    //parse landsting csv data
     function ltType(d) {
         d.LNKOD = +d.LNKOD;
         d['2015'] = +d['2015'];
         return d;
-        
+
     } //end vkvType
-    
+
 
 //////////////////////////////////////////   RESULT STYLING     /////////////////////////////////////////
-    
+
     //set colour depending on result
     function getColour(objectResult) {
-        
+
         return objectResult === null ? nodata :
            objectResult >= 0 && objectResult <= 9 ? red :
            objectResult > 9 && objectResult <= 19 ? orange :
@@ -245,16 +245,16 @@ $(document).ready(function() {
            objectResult > 39 ? darkGreen :
                       nodata;
     }; //end get colour
-    
-    
+
+
 
 ////////////////////////////////////   MAP SHAPES, DATA & EVENTS     ///////////////////////////////////////
-    
+
     //draw sweden lan on map
     function drawSweLan(lanShape, data) {
-        
+
         timeLegendData = [];  // empty legend data array
-            
+
         var lanPath = g.selectAll('path.sweden')
             .data(lanShape.features)
             .enter().append('path')
@@ -276,9 +276,9 @@ $(document).ready(function() {
                 opacity: 1
             })
             .on('mouseenter', function(d) {
-                
+
                 if (!isPlaying && !mapClick && currentView != 'vkv' && currentView != 'komStat') {
-                    
+
                     //update style on hovered lan
                     var lanId = +d.properties.LNKOD;
 
@@ -287,7 +287,7 @@ $(document).ready(function() {
                         if (lanDataSorted[j].LNKOD == lanId) {
                             $lanResult.html('<p>' + lanDataSorted[j]['2015'] + '%</p>');
                             $lanName.text(lanDataSorted[j].Län);
-                            
+
                             //re-draw lanline on hover
                             var hoverLan = [];
                             hoverLan.push(lanDataSorted[j]);
@@ -299,13 +299,13 @@ $(document).ready(function() {
                 }
             })
             .on('mouseleave', function(d) {
-                
+
                 if (!isPlaying && !mapClick && currentView != 'vkv' && currentView != 'komStat') {
                     var lanId = +d.properties.LNKOD;
-                    
+
                     //remove hoverlan
                     d3.selectAll('path.activeLine').remove();
-             
+
                     //reset lan name and result
                     $lanResult.html('');
                     $lanName.text('Län');
@@ -313,26 +313,26 @@ $(document).ready(function() {
                     $('path.sweden').not(this).css('opacity', 1);
                 }
             });
-            
+
         if (currentView == 'trend' || mapClick) {
             lanPath
                 .on('click', clicked);
         }
-            
-        
+
+
          alterLegend(timeLegendData);    //update map legend
     }
-        
-    
+
+
     //draw kommuner on map
     function drawKommuner(lanKomData, lanKomShape, lanId) {
-        
+
         timeLegendData = [];  // empty legend data array
-        
+
         //show kommuner result and name divs
         $kommunResult.show();
         $kommunName.show();
-        
+
         //update name and result fields of the active lan
         for (var j = 0; j < lanDataSorted.length; j++) {
 
@@ -341,8 +341,8 @@ $(document).ready(function() {
                 $lanName.text(lanDataSorted[j].Län);
             }
         }
-        
-        //draw kommuner shapes in lan              
+
+        //draw kommuner shapes in lan
         var kommunPath = g.selectAll('path.kommun')
             .data(lanKomShape)
             .enter().append('path')
@@ -364,44 +364,44 @@ $(document).ready(function() {
             }).on('mouseenter', function(d) {
 
                     if (!isPlaying && mapClick) {
-                        
+
                         var komId = +d.properties.ID;
-                        
-                        
+
+
                         //events based on current view
-                        if (currentView == 'trend') {    
-                           
-                            //update kommun name and results when hovered                    
+                        if (currentView == 'trend') {
+
+                            //update kommun name and results when hovered
                             for (var j = 0; j < lanKomData.length; j++) {
 
                                 if (lanKomData[j].KOM_IDID == komId) {
-                                   
-                                    
+
+
                                     //check for null data and update accordingly
                                     if (!isNaN(lanKomData[j]['2015'])) {
                                         $kommunResult.html('<p>' + lanKomData[j]['2015'] + '%</p>');
                                     } else {
                                         $kommunResult.html('<p>n/a</p>');
                                     }
-                                    
+
                                     $kommunName.text(lanKomData[j].Kommun); //update kommun name
-                                    
+
                                     //store hover kommun and redraw
                                     var hoverKommun = [];
                                     hoverKommun.push(lanKomData[j]);
                                     drawActiveKom(hoverKommun);
                                 }
-                            }                            
+                            }
                         } else if (currentView == 'komStat') {
                             //update name results and targets in bargraph of each kommun when hovered
                             for (var j = 0; j < activeKom.length; j++) {
                                 if (activeKom[j].KOM_IDID == komId) {
-                                    
+
                                     var activeCol = getColour(activeKom[j]['2015']); //get colour from result
                                     $('#komStatGoal').show();   //show the goal div
                                     $('#komStatName').text(activeKom[j].Kommun); //update kommun name
-                                    $('#komStatResult').css('backgroundColor', activeCol); //update div colour  
-                                    
+                                    $('#komStatResult').css('backgroundColor', activeCol); //update div colour
+
                                     //check for null data and update accordingly
                                     if (!isNaN(activeKom[j]['2015'])) {
                                         $('#komStatResult').html('<p>' + activeKom[j]['2015'] + '%</p>');
@@ -410,22 +410,22 @@ $(document).ready(function() {
                                         $('#komStatResult').html('<p>n/a</p>');
                                         $('#komStatResult').css('color', '#139fbb');
                                     }
-                                    
+
                                     if (!isNaN(activeKom[j].Mål)) {
                                         $('#komStatGoal').html('<p>' + activeKom[j].Mål + '%</p>');
                                     } else {
                                         $('#komStatGoal').html('<p>n/a</p>');
                                     }
-                                    
+
                                     if (!isNaN(activeKom[j].Mål_År)) {
                                         $('#komStatGoalName').text(activeKom[j].Mål_År + ' MÅL');
                                     } else {
                                         $('#komStatGoalName').text('INGET ANGIVET ÅR');
                                     }
-                                    
+
                                 }
-                            } 
-                            
+                            }
+
                         }
                         //style other kommuner in lan on hover
                         $('path.kommun').not(this).css('opacity', 0.7);
@@ -434,18 +434,18 @@ $(document).ready(function() {
                 .on('mouseleave', function(d) {
 
                     if (!isPlaying) {
-                        
+
                         //reset kommunline style results
                         var komId = +d.properties.ID;
-                        if (currentView == 'trend') {    
-                            
+                        if (currentView == 'trend') {
+
                             //remove hover kommun
                             d3.selectAll('path.activeKomLine').remove();
 
                             $kommunResult.html('');
                             $kommunName.text('Kommuner');
                         } else if (currentView =='komStat') {
-                            
+
                             //reset names and results in bargraph
                             $('#komStatName').text('');
                             $('#komStatGoalName').text('');
@@ -454,25 +454,25 @@ $(document).ready(function() {
                             $('#komStatGoal').html('');
                             $('#komStatGoal').hide();
                         }
-                        
+
                         //reset other kommun styling
                         $('path.kommun').not(this).css('opacity', 1);
                     }
-                    
-                }); 
-        
-        
+
+                });
+
+
         drawKomResults(lanKomData);     //draw kommuner in linegraph
         alterLegend(timeLegendData);    //update map legend
-      
-    }//end draw kommun
-    
 
-    
-    
+    }//end draw kommun
+
+
+
+
     //draw vkvSweShape
      function drawVkvSwe(data) {
-         
+
        defs = svg.append('defs')
             .append('linearGradient')
                 .attr({
@@ -499,8 +499,8 @@ $(document).ready(function() {
                 'stop-color': 'rgb(255,255,255)',
                 'stop-opacity': 0.4
             });
-         
-         
+
+
 
         var vkvSwePath = g.selectAll('path.vkvSwe')
             .data(data.features)
@@ -514,7 +514,7 @@ $(document).ready(function() {
                 stroke: 'none',
                 opacity: 1
             });
-         
+
          defs.selectAll('stop')
             .transition()
                 .duration(800)
@@ -522,7 +522,7 @@ $(document).ready(function() {
                 .attr({
                     offset: '31%'
                 });
-        
+
          vkvLegend = d3.select('g.g')
             .append('text')
             .attr({
@@ -530,8 +530,8 @@ $(document).ready(function() {
                 y: 565,
                 class: 'vkvText'
             })
-            .text(0); 
-         
+            .text(0);
+
          vkvLegend
             .transition()
             .duration(800)
@@ -540,11 +540,11 @@ $(document).ready(function() {
                 y: 389.85
             })
             .tween('text', tweenText(0.31));
-    }   
-    
+    }
+
    //transition offset of defs depending on data
     function transitionOffset(percent) {
-        d3.selectAll('path.vkvSwe')  
+        d3.selectAll('path.vkvSwe')
             .append('text')
             .text('hello');
 
@@ -555,9 +555,9 @@ $(document).ready(function() {
                 .attr({
                     offset: (percent * 100)  +'%'
                 });
-        
+
         var legendTextPosition = 565 - (5.65 * (percent * 100));
-        
+
         vkvLegend
             .transition()
             .duration(800)
@@ -577,7 +577,7 @@ $(document).ready(function() {
                 .attr({
                     offset: '31%'
         });
-         
+
          vkvLegend
             .transition()
             .duration(800)
@@ -588,13 +588,13 @@ $(document).ready(function() {
             .tween('text', tweenText(0.31));
 
      }
-        
+
     //tween between percent values
     function tweenText( newValue ) {
        return function() {
           var currentValue = parseFloat(this.textContent);
           currentValue = currentValue / 100;
-           
+
           var i = d3.interpolate( currentValue, newValue );
 
           return function(t) {
@@ -602,24 +602,24 @@ $(document).ready(function() {
           };
         }
     }   //end tweentext
-    
-    
-    
+
+
+
      //map click function
     function clicked(d) {
-        
-        
+
+
         //check if the timeline is playing
         if (!isPlaying) {
-            
+
             currentFrame ='2015';   //reset currentFrame
             $('#graphYear').text('2015'); //update year in trendgraph
-            
+
             mapClick = true; //set mapclick to true
-            
+
             var lanName = d.properties.LNNAMN;  //set lanName as clicked lan
             activeLanId = d.properties.LNKOD;   //set lanId as clicked lan id
-            
+
             checkLanNameLength(lanName);
 
             //empty arrays to store data and shapes of kommuner in the lan
@@ -627,9 +627,9 @@ $(document).ready(function() {
             lanKommunerShape = [];
             activeLan = [];
 
-            
+
             active.classed("active", false);    //remove active class from previous lan
-            active = d3.select(this).classed("active", true);   //set active class on clicked lan   
+            active = d3.select(this).classed("active", true);   //set active class on clicked lan
 
 
             //capture bounds of clicked lan and zoom to boundaries
@@ -645,10 +645,10 @@ $(document).ready(function() {
               .duration(750)
               .style("stroke-width", 0.2 / scale + "px")
               .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
-            
-            
+
+
             $('#backToSwe').show(); //show b2swe button for navigation
-            
+
             //update arrays of kommuner data and shapes if lan is the same as active lanName
             for (var i = 0; i < kommunDataSorted.length; i++) {
                 if (kommunDataSorted[i].Lan == lanName) {
@@ -656,7 +656,7 @@ $(document).ready(function() {
                     lanKommunerShape.push(kommunShapeSorted[i]);
                 }
             }
-            //update the active lan array 
+            //update the active lan array
             for (var j = 0; j < lanDataSorted.length; j++) {
                 if (lanDataSorted[j].LNKOD == activeLanId) {
                     activeLan.push(lanDataSorted[j]);
@@ -670,35 +670,35 @@ $(document).ready(function() {
             d3.selectAll('path.kommun').remove();   //remove all kommuner paths
             d3.selectAll('path.lanLine').remove();  //remove all lan lines in trendgraph
             d3.selectAll('path.activeLine').remove();   //remove all active lines in trendgraph
-            
+
             //check if view is komstat and push active kommuner to bargraph
             if (currentView == 'komStat') {
                 $('#topListGraph').hide();   //hide toplist graph
                 $komStatGraph.show();       //hide komstat graph
-                
+
                 var mapKommuner = [];
-                
+
                 for (var i = 0; i < lanKommunerData.length; i++) {
                     mapKommuner.push(lanKommunerData[i]);
                 }
-               
+
                 sortActiveKommuner(mapKommuner);
-                
-            } else if (currentView == 'trend') { 
+
+            } else if (currentView == 'trend') {
                drawActiveLan(activeLan);   //draw active lan in trendgraph
             }
-            
+
             drawKommuner(lanKommunerData, lanKommunerShape, activeLanId);   //draw active kom shapes
         }
     }
-    
-    
-    
+
+
+
     //reset map click
     function reset() {
-    
+
         mapClick = false;
-        
+
         active.classed("active", false);
         active = d3.select(null);
 
@@ -707,29 +707,29 @@ $(document).ready(function() {
           .style('stroke-width', '0.8px')
           .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
     }
-    
-    
+
+
 
     //get occurrences of each colour to update legend graph
     function alterLegend(legendData) {
 
         var nodataLength = $.grep(legendData, function(a) {
-            return a == nodata; 
+            return a == nodata;
         }).length;
         var redLength = $.grep(legendData, function(a) {
-            return a == red; 
+            return a == red;
         }).length;
         var orangeLength = $.grep(legendData, function(a) {
-            return a == orange; 
+            return a == orange;
         }).length;
         var yellowLength = $.grep(legendData, function(a) {
-            return a == yellow; 
+            return a == yellow;
         }).length;
         var lightGreenLength = $.grep(legendData, function(a) {
-            return a == lightGreen; 
+            return a == lightGreen;
         }).length;
         var darkGreenLength = $.grep(legendData, function(a) {
-            return a == darkGreen; 
+            return a == darkGreen;
         }).length;
 
         var nodataHeight = (456 * (nodataLength / legendData.length)) + 14;
@@ -765,18 +765,18 @@ $(document).ready(function() {
 
     }
 
-    
-//////////////////////////////////////////   TREND VIEW     /////////////////////////////////////////   
-    
+
+//////////////////////////////////////////   TREND VIEW     /////////////////////////////////////////
+
     //default linegraph settings
     function defaultLineChart() {
-        
+
         //update graph title
         $graphTitle.html('<h4 class="trend">Trend</h4>');
-        
+
         //crate result circles
         $sweResult.html('<p>31%</p>');
-        
+
         //set up lingraph scales
         lineChartScaleX = d3.scale.linear()
                 .domain([2008, 2016])
@@ -785,7 +785,7 @@ $(document).ready(function() {
         lineChartScaleY = d3.scale.linear()
             .domain([0, 100])
             .range([lineChartHeight -70, 0]);
-        
+
         //set up x and y axis
         var xAxis = d3.svg.axis()
             .scale(lineChartScaleX)
@@ -799,14 +799,14 @@ $(document).ready(function() {
             .tickValues([0,20,40,60,80,100])
             .tickFormat(function(d) { return d + "%";})
             .orient("left");
-        
+
         //line interpolation based on year and percent with accounting for null data
         line = d3.svg.line()
             .interpolate("cardinal")
             .x(function(d) { return lineChartScaleX(d.year) })
             .y(function(d) { return lineChartScaleY(d.percent) })
             .defined(function(d) { return !isNaN(d.percent); });
-        
+
         //set up linegraph svg
         lineChart = d3.selectAll("#svgArea").append("svg")
             .attr("width", lineChartWidth)
@@ -833,11 +833,11 @@ $(document).ready(function() {
             .call(yAxis);
 
     } //end set up default line chart
-    
-    
+
+
      //set sweden results in linegraph
         function swedenResults() {
-            
+
             lineChartDefaultData = [
                 {year: 2008, percent: 7},
                 {year: 2009, percent: 9},
@@ -848,7 +848,7 @@ $(document).ready(function() {
                 {year: 2014, percent: 23},
                 {year: 2015, percent: 31}
             ];
-            
+
             lineChart.append("path")
                 .datum(lineChartDefaultData)
                 .attr({
@@ -857,17 +857,17 @@ $(document).ready(function() {
                 });
 
         }; //end sweden results
-    
-    
-    
-    
-    //draw län result to linegraph 
+
+
+
+
+    //draw län result to linegraph
     function drawLanResults(lanData) {
-        
+
         for (var i = 0; i < lanData.length; i ++) {
-            
+
             var lanId = lanData[i].LNKOD;
-            
+
              var lanResults = [
             {year: 2008, percent:lanData[i]["2008"]},
             {year: 2009, percent:lanData[i]["2009"]},
@@ -878,7 +878,7 @@ $(document).ready(function() {
             {year: 2014, percent:lanData[i]["2014"]},
             {year: 2015, percent:lanData[i]["2015"]}
             ];
-        
+
 
             lineChart.append("path")
                 .datum(lanResults)
@@ -890,20 +890,20 @@ $(document).ready(function() {
                     d: line,
                     id: 'l' + lanId
                 });
-            
-        }; 
+
+        };
     } //end draw lan resultat
-    
-    
+
+
     //draw active län result to linegraph
     function drawActiveLan(lanData) {
-        
+
         checkLanNameLength(lanData[0].Län);
-        
+
         for (var i = 0; i < lanData.length; i ++) {
-            
+
             var lanId = lanData[i].LNKOD;
-            
+
              var lanResults = [
             {year: 2008, percent:lanData[i]["2008"]},
             {year: 2009, percent:lanData[i]["2009"]},
@@ -925,22 +925,22 @@ $(document).ready(function() {
                     d: line,
                     id: 'l' + lanId
                 });
-            
+
         };
     } //end draw active lan resultat
-    
-    
-    //draw kommuner result to linegraph 
+
+
+    //draw kommuner result to linegraph
     function drawKomResults(komData) {
-        
-        d3.selectAll('path.komLine').remove();       
+
+        d3.selectAll('path.komLine').remove();
         activeKom = komData;
-        
-        
+
+
         for (var i = 0; i < komData.length; i ++) {
-            
+
             var komId = komData[i].KOM_IDID;
-            
+
              var komResults = [
             {year: 2008, percent:komData[i]["2008"]},
             {year: 2009, percent:komData[i]["2009"]},
@@ -951,8 +951,8 @@ $(document).ready(function() {
             {year: 2014, percent:komData[i]["2014"]},
             {year: 2015, percent:komData[i]["2015"]}
             ];
-            
-          
+
+
             lineChart.append("path")
                 .datum(komResults)
                 .transition()
@@ -963,18 +963,18 @@ $(document).ready(function() {
                     d: line,
                     id: 'k' + komId
                 });
-            
+
         };
     } //end draw kommun resultat
-    
-    
+
+
     //draw active län result to linegraph
     function drawActiveKom(komData) {
-        
+
         for (var i = 0; i < komData.length; i ++) {
-            
+
             var komId = komData[i].KOM_IDID;
-            
+
              var komResults = [
             {year: 2008, percent:komData[i]["2008"]},
             {year: 2009, percent:komData[i]["2009"]},
@@ -996,11 +996,11 @@ $(document).ready(function() {
                     d: line,
                     id: 'k' + komId
                 });
-            
+
         };
     } //end draw active lan resultat
-    
-    
+
+
     function checkLanNameLength(lanName) {
         //check for lan name length to adjust kommun name position
             if (lanName.length > 7 ) {
@@ -1008,29 +1008,29 @@ $(document).ready(function() {
                 $kommunName.css('left', '560px');
             } else {
                 $kommunResult.css('left', '460px');
-                $kommunName.css('left', '500px');                                        
+                $kommunName.css('left', '500px');
             }
     }
-       
-    
-    
+
+
+
 /////////////////////////////////////   TIME SLIDER     /////////////////////////////////////////
-    
+
     //create slider
     function createSlider() {
-        
+
         sliderScale = d3.scale.linear()
             .domain([2008, 2015]);
-        
+
         val = slider ? slider.value() : 2008;
-        
+
         slider = d3.slider()
                 .scale(sliderScale)
                 .value(val);
-        
+
     } //end create slider
-    
-        
+
+
     //timeslider interval and animation
     function animate() {
 
@@ -1042,7 +1042,7 @@ $(document).ready(function() {
             }
 
             slider.value(currentFrame);
-            
+
             drawYear(currentFrame, true);
 
             if (currentFrame == 2015) {
@@ -1055,7 +1055,7 @@ $(document).ready(function() {
                 clearInterval(interval);
                 return;
             }
-        }, frameLength);            
+        }, frameLength);
 
     }   //end animate
 
@@ -1064,9 +1064,9 @@ $(document).ready(function() {
 
         $('#graphYear').text(year); //update year in trendgraph
         timeLegendData = [];    //empty timeLegendData array
-        
+
         if (mapClick) {
-            
+
             g.selectAll('path.kommun')
             .transition()
             .duration(100)
@@ -1076,11 +1076,11 @@ $(document).ready(function() {
                     return getColour(lanKommunerData[i][year]);
                 }
             });
-            
+
              alterLegend(timeLegendData);
-            
+
         } else {
-            
+
             g.selectAll('path.sweden')
             .transition()
             .duration(100)
@@ -1090,10 +1090,10 @@ $(document).ready(function() {
                     return getColour(lanDataSorted[i][year]);
                 }
             });
-            
+
              alterLegend(timeLegendData);
         }
-        
+
     }   //end draw year
 
 
@@ -1104,8 +1104,8 @@ $(document).ready(function() {
             $('#playBtn').fadeIn();
         }).mouseleave(function() {
             $('#playBtn').fadeOut();
-        }); 
-    
+        });
+
 
         d3.select('#playBtn')
             .on('click', function() {
@@ -1131,14 +1131,14 @@ $(document).ready(function() {
         });
     }
 
-    
-    
+
+
 //////////////////////////////////////  KOMMUN STATISTICS VIEW     /////////////////////////////////////////
-    
+
     //set default bar chart
     function defaultBarChart(data) {
 
-    
+
         barXAxis = d3.svg.axis()
             .scale(barChartScaleX)
             .tickFormat(function(d) { return d + "%";})
@@ -1153,34 +1153,34 @@ $(document).ready(function() {
 
         sortActiveKommuner(data);
     }
-    
+
      //sort kommun data for bar chart
     function sortActiveKommuner(activeKomParam) {
-        
+
         var sortedKomResults = activeKomParam.sort(function(a,b) {
             return -(!isNaN(a['2015']))+(!isNaN(b['2015'])) || -(a['2015']>b['2015'])||+(a['2015']  <b['2015']);
         });
-        
+
         for (var i = 0; i < sortedKomResults.length; i++) {
             var prevResult = sortedKomResults[i - 1];
-            
+
             if (i != 0) {
                if (sortedKomResults[i]['2015'] == prevResult['2015']) {
                     sortedKomResults[i].placement = prevResult.placement;
                 } else {
-                    sortedKomResults[i].placement = i; 
-                } 
+                    sortedKomResults[i].placement = i;
+                }
             } else {
                 sortedKomResults[i].placement = i;
             }
-          
+
         }
         drawBars(sortedKomResults);
     }   //end sortactivekommuner
-    
-    
+
+
     function drawBars(sortedKomResults) {
-        
+
         $('#svgArea').scrollTop(0);
 
         if ( sortedKomResults.length > 10 ) {
@@ -1191,23 +1191,23 @@ $(document).ready(function() {
             $('#svgArea').css('overflowY', 'hidden');
             $('#moreResults').hide();
         }
-        
+
         //remove rectangles from barChart
         barChart.selectAll("g")
             .remove();
-        
+
         if (!mapClick) {
             topListResults(sortedKomResults);
         } else {
             barGoals(sortedKomResults);
-            barResults(sortedKomResults); 
+            barResults(sortedKomResults);
         }
-       
+
     }   //end drawbars
-    
-    
+
+
      function barResults(sortedKomResults) {
-                     
+
             bar = barChart.selectAll("g.barResults")
             .data(sortedKomResults)
             .enter().append("g")
@@ -1216,7 +1216,7 @@ $(document).ready(function() {
             })
             .attr('class', 'barResults');
 
-       
+
             rectangle = bar.append('rect')
                 .style({
                     fill: function(d) {
@@ -1234,7 +1234,7 @@ $(document).ready(function() {
                 .delay(800)
                 .duration(800)
                 .ease("quad")
-                .attr("width", function(d) { 
+                .attr("width", function(d) {
                     if (!isNaN(d['2015'])) {
                         return barChartScaleX(d['2015']);
                     } else {
@@ -1255,13 +1255,13 @@ $(document).ready(function() {
                 .text(function(d) {
                     return d.Kommun;
             });
-            
+
     }   //end bar results
-    
-    
+
+
     function barGoals(sortedKomResults) {
-        
-            
+
+
             var goal = barChart.selectAll("g.barGoals")
             .data(sortedKomResults)
             .enter().append("g")
@@ -1270,7 +1270,7 @@ $(document).ready(function() {
             })
             .attr('class', 'barGoals');
 
-       
+
             rectangle = goal.append('rect')
                 .style({
                     fill: '#fff',
@@ -1285,23 +1285,23 @@ $(document).ready(function() {
             rectangle.transition()
                 .duration(800)
                 .ease("quad")
-                .attr("width", function(d) { 
+                .attr("width", function(d) {
                     if (!isNaN(d.Mål)) {
                         return barChartScaleX(d.Mål);
                     } else {
                         return 0;
                     }
             });
-            
+
         } //end bar goals
-    
-    
+
+
     function topListResults(sortedKomResults) {
-        
+
         //remove rectangles from barChart
         barChart.selectAll("g")
             .remove();
-        
+
         var topList = barChart.selectAll("g.barTopList")
             .data(sortedKomResults)
             .enter().append("g")
@@ -1319,7 +1319,7 @@ $(document).ready(function() {
                 }
             });
 
-       
+
             rectangle = topList.append('rect')
                 .style({
                     fill: function(d) {
@@ -1336,14 +1336,14 @@ $(document).ready(function() {
             rectangle.transition()
                 .duration(800)
                 .ease("quad")
-                .attr("width", function(d) { 
+                .attr("width", function(d) {
                     if (!isNaN(d['2015'])) {
                         return barChartScaleX(d['2015']);
                     } else {
                         return 5;
                     }
                 });
-        
+
         var textLabel = topList.append('text')
                 .attr({
                     x: -10,
@@ -1360,9 +1360,9 @@ $(document).ready(function() {
                     } else {
                         return d.Landsting;
                     }
-                    
+
                 });
-        
+
         var textPlacement = topList.append('text')
                 .attr({
                     x: function() {
@@ -1386,7 +1386,7 @@ $(document).ready(function() {
                         return d.placement + 1 + '.';
                     }
                 });
-        
+
         var textResult = topList.append('text')
                 .attr({
                     x: 10,
@@ -1405,7 +1405,7 @@ $(document).ready(function() {
                         return 'n/a';
                     }
                 });
-        
+
         textResult
             .transition()
             .duration(800)
@@ -1419,16 +1419,16 @@ $(document).ready(function() {
                     }
                 }
             });
-                   
-            
-        
+
+
+
         if ($('#viewKommun').hasClass('active')) {
             searchFunction('#komSearch', 'Sök Kommun');
         } else {
             searchFunction('#ltSearch', 'Sök Landsting');
         }
-        
-    
+
+
         //topList Search Function
         function searchFunction(id, value) {
             availableSearch = [];
@@ -1436,7 +1436,7 @@ $(document).ready(function() {
                 if ($('#viewKommun').hasClass('active')) {
                     availableSearch.push(sortedKomResults[j].Kommun);
                 } else {
-                    availableSearch.push(sortedKomResults[j].Landsting); 
+                    availableSearch.push(sortedKomResults[j].Landsting);
                 }
             }
 
@@ -1458,14 +1458,14 @@ $(document).ready(function() {
             .on('blur', function() {
                 $(id).val(value);
             });
-            
+
         }   //end search function
-        
+
     }   //end toplist results
-    
+
 
 //////////////////////////////////////////   VKV VIEW     /////////////////////////////////////////
-    
+
     function radarChart(data) {
         var cfg = {
              w: 280,				//Width of the circle
@@ -1482,19 +1482,19 @@ $(document).ready(function() {
              roundStrokes: true	//If true the area and stroke will follow a round path (cardinal-closed)
 //             color: '#6a213e'	//Color
         };
-        
+
         var allAxis = (data.map(function(i, j){ return i.Produktgrupp}));	//Names of each axis
 		var total = allAxis.length;				//The number of different axes
 		var radius = Math.min(cfg.w/2, cfg.h/2); 	//Radius of the outermost circle
 		var format = d3.format('%');			 	//Percentage formatting
 		var angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
-        
+
         //Scale for the radius
         var rScale = d3.scale.linear()
             .range([0, radius])
             .domain([0, 1]);
-        
-        
+
+
 //        //Remove whatever chart with the same id/class was present before
 //        d3.select(id).select("svg").remove();
 
@@ -1503,17 +1503,17 @@ $(document).ready(function() {
                 .attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
                 .attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
                 .attr("class", "radar");
-        
-        //Append a g element		
-        var g = svg.append("g") 
+
+        //Append a g element
+        var g = svg.append("g")
             .attr('class', 'mainG')
             .attr("transform", "translate(" + 300 + "," + 180 + ")");
-        
-        
-        
+
+
+
         //Wrapper for the grid & axes
         var axisGrid = g.append("g").attr("class", "axisWrapper");
-        
+
         //Draw the background circles
         axisGrid.selectAll('.levels')
            .data(d3.range(1,(cfg.levels+1)).reverse())
@@ -1538,36 +1538,36 @@ $(document).ready(function() {
                 'stroke-dasharray': function(d, i) {
                     if (i > 0) {
                         return '5,5';
-                    } 
+                    }
                 }
             });
-        
-        
+
+
          //The radial line function
         var radarLine = d3.svg.line.radial()
             .interpolate("cardinal-closed")
             .radius(function(d) { return rScale(d.Ekovarde); })
             .angle(function(d,i) {return i * angleSlice; });
 
-        
-        //Create a wrapper for the blobs	
+
+        //Create a wrapper for the blobs
         var blobWrapper = g.append("g")
             .attr("class", "radarWrapper");
 
-        //Append the backgrounds	
+        //Append the backgrounds
         var blob = blobWrapper
             .append('path')
             .attr({
                 class:'radarArea',
                 d: radarLine(vkvData)
-                
+
             })
             .style({
                 fill: '#6a213e',
                 opacity: 0.6
             });
-        
-       //Create the outlines	
+
+       //Create the outlines
 	   blobWrapper.append('path')
         .attr({
             class: 'radarStroke',
@@ -1580,11 +1580,11 @@ $(document).ready(function() {
             'stroke-width': '3px',
             fill: 'none'
         });
-        
-        
+
+
         //Text indicating at what % each level is
         var percentAxis = g.append("g").attr("class", "percentAxis");
-        
+
         percentAxis.selectAll('.axisPerc')
             .data(d3.range(1,(cfg.levels+1)).reverse())
             .enter().append('text')
@@ -1592,7 +1592,7 @@ $(document).ready(function() {
                 class: 'percentPerc',
                 x: 4,
                 y: function(d) {
-                    return -d * radius / cfg.levels; 
+                    return -d * radius / cfg.levels;
                 },
                 dy: '-0.5em',
                 dx: '-1.5em',
@@ -1604,20 +1604,20 @@ $(document).ready(function() {
                 opacity: 1,
                 'font-family': 'Futura Heavy'
             })
-            .text(function(d,i) { 
+            .text(function(d,i) {
                 if (d < 4) {
-                    return format(1 * d/cfg.levels); 
+                    return format(1 * d/cfg.levels);
                 }
             });
-       
-        
+
+
         //Create the straight lines radiating outward from the center
         var axis = axisGrid.selectAll(".axis")
             .data(vkvData)
             .enter()
             .append("g")
             .attr("class", "axis");
-        
+
         function titleAlign(d, i) {
             if (i == 0 || i == 8) {
                 return 'middle';
@@ -1627,7 +1627,7 @@ $(document).ready(function() {
                 return 'end';
             }
         }
-        
+
         //Append the lines
         axis.append('line')
             .attr({
@@ -1669,235 +1669,234 @@ $(document).ready(function() {
                 return d.Produktgrupp;
             })
             .on('mouseenter', function(d, i) {
-            
+
                 d3.selectAll('path.sweden').style('opacity', 0);
                 d3.select(this).style({opacity: 1, 'font-family': 'Futura Heavy'});
-            
+
                 var ekovarde = d.Ekovarde;
                 transitionOffset(ekovarde);   //transition the stop offsets
             })
             .on('mouseleave', function(d, i) {
 
                 d3.select(this).style({opacity: 0.6, 'font-family': 'Futura Medium'});
-            
+
                 transitionResetOffset();
-            
+
             });
 
-        
+
     }
-    
-  
-    
-   
-      
-    
+
+
+
+
+
+
 //////////////////////////////////////////   EVENT HANDLERS     /////////////////////////////////////////
-    
-        
-    //icon click function 
+
+
+    //icon click function
     function iconClick(clickedIcon) {
-       
+
         var iconId = clickedIcon;
         $('#statArea > div.active').toggleClass('active');  //remove active class of icons
         $('#' + clickedIcon).toggleClass('active');  //set active class on clicked icon
-        
+
         $('#svgArea').children().detach();  //empty SVG area
-        d3.selectAll('defs').remove();  //remove defs from svg 
-        d3.selectAll('path.vkvSwe').remove();   //remove vkv map 
+        d3.selectAll('defs').remove();  //remove defs from svg
+        d3.selectAll('path.vkvSwe').remove();   //remove vkv map
         d3.selectAll('text.vkvText').remove();  //remove vkv map legend
-        
+
         //hide all graphs
         $komStatGraph.hide();   //hide kommun statistics graph
         $('#vkvGraph').hide();  //hide vkv graph
-        $('#trendGraph').hide();//hide trend graph  
+        $('#trendGraph').hide();//hide trend graph
         $('#topListGraph').hide(); //hide toplist graph
         $('#svgArea').css('cursor', 'pointer'); //set svgarea cursor to pointer
-        
-        
-        
+
+
+
         d3.selectAll('path.sweden').style('opacity', 1);    //show swepath
         $('#legend').show();    //show legend
-        
-        
-        
+
+
+
         //settings depending on which icon was clicked
         // TREND ICON VIEW //
         if (iconId == 'trendIcon') {
-            
+
             currentView = 'trend';  //update current view
-            
+
             $('#trendGraph').show();//show trend graph
             $('#legend').show();    //show legend
             $('#svgArea').css('height', '320px');   //set svgArea height
-            
+
             defaultLineChart();     //draw default linegraph
-            
+
             //update play button and current year of linegraph
             $('#svgArea').append('<p id="graphYear">2015</p>');
             $('#svgArea').append('<img id="playBtn" src="media/play_button.png" width="84px" height="85px" alt="Play Button">');
             playEvents();
-            
+
             //check if in national or kommun view
             //national view
             if (!mapClick) {
-                
+
                 $kommunResult.hide();   //hide kommun result
                 $kommunName.hide();     //hide kommun name
-                
+
                 d3.selectAll('path.kommun').remove();    //hide kommuner on map
                 d3.selectAll('path.sweden').remove();    //remove any swepath
                 drawSweLan(lanShapeData, lanDataSorted);   //draw lan boundaries on map
                 drawLanResults(lanDataSorted);  //draw lan results to linegraph
                 swedenResults();    //draw sweresults on line graph
-              
-            //kommun view    
+
+            //kommun view
             } else {
-                
+
                 $kommunResult.show();   //hide kommun result
                 $kommunName.show();     //hide kommun name
-                
+
                 d3.selectAll('path.sweden').style('opacity', 0.2);    //show swepath
                 drawKomResults(lanKommunerData);     //draw kommuner in linegraph
                 drawActiveLan(activeLan);   //draw active lan results in linegraph
                 swedenResults();    //draw swe results on linegraph
             }
-            
-            
-          // VKV VIEW //  
+
+
+          // VKV VIEW //
         } else if (iconId == 'vkvIcon') {
-            
+
             if (mapClick) {
                 reset();    //reset map to national view
                 $('#backToSwe').hide(); //remove the back to swe button
             }
-            
+
             currentView = 'vkv';    //update current view
-            
+
             d3.selectAll('path.sweden').remove();    //remove any swepath
             d3.selectAll('path.kommun').remove();    //hide kommuner on map
             $('#legend').hide();    //hide map legend
-            
+
             $('#vkvGraph').show();  //show vkvGraph
             $('#svgArea').css('height', '520px');   //set svgArea height
-                        
+
             radarChart(vkvData);    //run radarChart
             drawVkvSwe(vkvSweShape);   //draw vkvsweshape on map
-                       
-            
-            
-        // KOMMUN STATISTIK VIEW //    
+
+
+
+        // KOMMUN STATISTIK VIEW //
         } else if (iconId == 'komIcon') {
-            
-            
+
+
             currentView = 'komStat';    //update current view
-           
+
             $('#svgArea').css('height', '320px');   //set svgArea height
             $('#svgArea').css('cursor', 'default'); //set svgarea cursor to default
-            
+
             $('#moreResults').hide();   //hide moreresults as default
             $('#komStatGoal').hide();   //hide komstatgoal as default
-            
+
 
             //check if in kommun or national view
             //national view
             if (!mapClick) {
-                
+
                 $('#topBar > p.active').toggleClass('active');  //remove active class of view
                 $('#searchBar > div.active').toggleClass('active');  //remove active class of searchbar
                 $('#viewKommun').toggleClass('active');  //set active class on kommun view
                 $('#kommunSearch').toggleClass('active');  //toogle active class on kommun search
-                
+
                 d3.selectAll('path.sweden').remove();    //remove swepath from map
                 drawKommuner(kommunDataSorted, kommunShapeSorted);  //draw all kommuner on map
-                
+
                 $('#topListGraph').show();   //show toplist graph
                 defaultBarChart(allKomData);    //draw bargraph with all kommuner data
-                
-          
-                
-            //kommun view    
-            } else {    
+
+
+
+            //kommun view
+            } else {
                 d3.selectAll('path.sweden').style('opacity', 0.2);    //show swepath
-                
+
                 $komStatGraph.show();       //show komstat graph
                 //defaultBarChart(activeKom);     //draw bargraph with active kommuner
                  defaultBarChart(lanKommunerData);     //draw bargraph with active kommuner
             }
-            
+
         }
-        
+
     }//end iconclick
-    
+
     //trend icon events
     $('#trendIcon').click(function() {  if (!$(this).hasClass('active')) { iconClick(this.getAttribute('id')); }     });
-    
+
     //vkv icon events
     $('#vkvIcon').click(function() {    if (!$(this).hasClass('active')) { iconClick(this.getAttribute('id')); }    });
-    
+
     //komstat icon events
     $('#komIcon').click(function() {    if (!$(this).hasClass('active')) { iconClick(this.getAttribute('id')); }    });
-    
-    
-    
+
+
+
     //back2swe click events
     $('#backToSwe').click(function() {
-        
+
         reset();    //reset map zoom to national view
         $('#backToSwe').hide(); //remove back to swe button
-        
+
         currentFrame ='2015';   //reset currentFrame for time animation
         $('#graphYear').text('2015'); //update year in trendgraph
-        
+
         //check for current view type
         //Trend graph view
         if (currentView == 'trend') {
-            iconClick('trendIcon'); 
-        
-        //Kommun Stat view        
+            iconClick('trendIcon');
+
+        //Kommun Stat view
         } else if (currentView == 'komStat') {
             iconClick('komIcon');
-        } 
+        }
     });
-    
-    
-    
+
+
+
     //prepare to swap views
     function prepTopList(clickedView, view) {
-        
+
         $('#topBar > p.active').toggleClass('active');  //remove active class of view
         $('#searchBar > div.active').toggleClass('active');  //remove active class of searchbar
         $(clickedView).toggleClass('active');  //set active class on clicked icon
         $(view).toggleClass('active');  //toogle active class on kommun search
-       
+
         d3.selectAll('svg.barChartSVG').remove();    //remove old bars
     }
-    
+
     //TOPLIST STAT: KOMMUN VIEW
     $('#viewKommun').click(function() {
-        
+
         prepTopList(this, '#kommunSearch');
         defaultBarChart(allKomData);    //draw bargraph with all kommuner
-        
+
         d3.selectAll('path.sweden').remove();   //remove sweshapes
-        
+
         drawKommuner(kommunDataSorted, kommunShapeSorted);  //draw all kommuner on map
-        
+
     });
-    
+
     //TOPLIST STAT: LANDSTING VIEW
     $('#viewLandsting').click(function() {
-        
+
         prepTopList(this, '#landstingSearch');
-        
+
         d3.selectAll('path.kommun').remove();   //remove kommun shapes
-        
+
         drawSweLan(lanShapeData, ltDataSorted);   //draw landsting on map
-        defaultBarChart(ltDataBarChart);    //draw bargraph with all landsting        
-        
+        defaultBarChart(ltDataBarChart);    //draw bargraph with all landsting
+
     });
 
-    
 
-}); // end all 
 
+}); // end all

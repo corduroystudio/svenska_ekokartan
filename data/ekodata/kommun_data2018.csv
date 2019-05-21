@@ -1,0 +1,289 @@
+Lan,Kommun,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,Mål,Mål_År,KOM_IDID
+Stockholm,Botkyrka,36,35,34,32,28,22,19,17,12,11,null,50,2018,127
+Stockholm,Danderyd,31,29,31,29,26,null,15,20,8,6,null,null,null,162
+Stockholm,Ekerö,21,15,22,23,21,null,null,null,null,5,5,null,null,125
+Stockholm,Haninge,39,37,35,33,30,25,21,18,12,9,6,50,2018,136
+Stockholm,Huddinge,41,44,44,40,36,33,33,31,27,21,17,50,2020,126
+Stockholm,Järfälla,42,39,38,29,23,20,16,12,9,8,6,65,2020,123
+Stockholm,Lidingö,33,34,36,29,null,17,23,null,null,10,null,35,2020,186
+Stockholm,Nacka,31,24,23,null,null,null,null,null,null,8,10,null,null,182
+Stockholm,Norrtällje,27,22,20,19,null,null,7,5,null,2,3,null,null,188
+Stockholm,Nykvarn,47,48,45,36,null,null,17,13,3,null,null,25,null,140
+Stockholm,Nynäshamn,32,34,null,19,11,8,6,6,4,null,null,25,2019,192
+Stockholm,Salem,null,30,null,28,24,17,null,18,null,null,null,30,null,128
+Stockholm,Sigtuna,37,36,35,29,26,28,28,null,18,13,7,30,2016,191
+Stockholm,Sollentuna,27,26,20,18,16,14,10,6,4,3,null,null,null,163
+Stockholm,Solna,33,26,null,9,null,null,null,null,null,11,null,30,null,184
+Stockholm,Stockholm Stad,42,41,39,33,23,19,18,14,12,null,17,50,2019,180
+Stockholm,Sundbyberg,42,25,30,null,29,23,18,17,null,null,null,null,null,183
+Stockholm,Södertälje,56,55,56,55,48,45,44,42,30,18,17,null,null,181
+Stockholm,Tyresö,32,30,null,28,26,null,19,16,12,9,7,30,2018,138
+Stockholm,Täby,null,22,null,null,21,null,null,null,3,null,2,25,null,160
+Stockholm,Upplands Bro,37,35,null,27,null,19,16,6,null,null,6,50,2020,139
+Stockholm,Upplands Väsby,46,35,30,21,25,21,16,11,null,null,null,40,2016,114
+Stockholm,Vallentuna,29,23,19,16,null,14,null,null,3,null,null,null,null,115
+Stockholm,Vaxholm,38,31,38,33,28,null,20,16,9,5,null,40,2018,187
+Stockholm,Värmdö,23,23,23,21,22,19,12,15,12,10,null,null,null,120
+Stockholm,Österåker,28,21,21,20,19,13,12,12,8,4,null,null,null,117
+Uppsala,Enköping,19,null,null,6,6,5,4,3,3,,1,10,2016,381
+Uppsala,Heby,24,24,16,17,12,10,7,null,null,null,null,10,2016,331
+Uppsala,Håbo,40,28,24,34,24,null,16,null,null,1,null,null,null,305
+Uppsala,Knivsta,22,22,21,27,22,13,null,8,4,null,2,null,null,330
+Uppsala,Tierp,23,22,null,null,19,16,17,11,null,null,null,null,null,360
+Uppsala,Uppsala,45,41,34,26,21,15,17,16,13,5,5,100,2023,380
+Uppsala,Älvkarleby,null,null,10,null,8,9,null,null,null,null,null,null,null,319
+Uppsala,Östhammar,null,26,23,null,18,14,null,null,null,null,3,null,null,382
+Södermanland,Eskilstuna,51,52,51,51,46,34,30,30,25,15,9,50,2020,484
+Södermanland,Flen,40,37,34,33,19,null,null,null,null,null,1,30,2016,482
+Södermanland,Gnesta,38,34,35,28,null,20,20,15,12,10,11,50,null,461
+Södermanland,Katrineholm,29,30,30,32,32,8,6,12,7,7,null,40,2019,483
+Södermanland,Nyköping,39,55,51,42,40,21,22,20,20,20,null,50,2016,480
+Södermanland,Oxelösund,34,38,40,17,15,10,null,5,null,0,0,25,2016,481
+Södermanland,Strängnäs,45,37,34,31,null,18,null,null,null,null,0,40,2016,486
+Södermanland,Trosa,54,49,47,40,41,38,34,27,25,19,16,60,2018,488
+Södermanland,Vingåker,29,null,null,28,25,20,13,5,null,null,1,30,2016,428
+Östergötland,Boxholm,19,19,18,null,11,5,null,null,2,1,1,null,null,560
+Östergötland,Finspång,35,33,31,30,25,20,17,17,11,9,3,27,2016,562
+Östergötland,Kinda,32,29,30,30,27,25,18,14,4,4,5,25,2023,513
+Östergötland,Linköping,32,32,25,24,28,15,16,7,null,null,null,25,2016,580
+Östergötland,Mjölby,21,21,21,15,8,8,null,null,0,6,null,25,2018,586
+Östergötland,Motala,48,52,52,49,45,41,32,33,29,null,null,50,2016,583
+Östergötland,Norrköping,39,36,32,24,25,20,21,18,15,0,,30,2016,581
+Östergötland,Söderköping,34,31,27,null,24,null,null,null,null,null,null,null,null,582
+Östergötland,Vadstena,39,40,36,30,23,20,16,11,7,null,null,25,2016,584
+Östergötland,Valdemarsvik,34,30,null,null,22,16,10,null,8,5,null,null,null,563
+Östergötland,Ydre,null,29,29,28,22,17,17,16,13,5,3,25,2016,512
+Östergötland,Åtvidaberg,34,28,null,null,null,null,null,0,null,null,null,null,null,561
+Östergötland,Ödeshög,17,16,13,null,14,8,null,4,3,1,6,null,null,509
+Jönköping,Aneby,20,16,24,16,null,7,13,7,4,5,3,10,2016,604
+Jönköping,Eksjö,null,null,11,null,8,9,14,10,9,6,4,null,null,686
+Jönköping,Gislaved,42,36,34,35,33,24,24,17,6,5,3,25,2016,662
+Jönköping,Gnosjö,22,null,11,null,11,14,null,null,null,0,null,null,null,617
+Jönköping,Habo,27,25,26,null,null,null,16,10,2,2,1,null,null,643
+Jönköping,Jönköping,23,23,42,19,20,16,14,12,6,3,3,25,2016,680
+Jönköping,Mullsjö,23,null,null,null,21,17,14,11,1,1,1,null,null,642
+Jönköping,Nässjö,null,null,21,16,14,12,9,8,5,3,1,25,2020,682
+Jönköping,Sävsjö,20,20,19,18,18,10,null,3,null,null,null,null,null,684
+Jönköping,Tranås,16,13,null,14,11,3,3,4,4,4,3,25,null,687
+Jönköping,Vaggeryd,30,41,42,40,36,34,28,24,20,26,21,40,2016,665
+Jönköping,Vetlanda,15,12,11,11,9,5,3,4,3,2,null,null,null,685
+Jönköping,Värnamo,18,13,17,19,12,9,6,7,7,12,8,30,2016,683
+Kronoberg,Alvesta,37,36,37,37,38,32,23,20,14,10,10,25,2016,764
+Kronoberg,Lessebo,32,31,26,18,20,21,17,8,4,null,null,30,2016,761
+Kronoberg,Ljungby,25,26,35,20,22,19,16,15,11,12,7,25,2016,781
+Kronoberg,Markaryd,25,22,24,21,null,15,null,6,4,3,2,20,2016,767
+Kronoberg,Tingsryd,43,44,42,34,27,19,19,19,19,14,4,25,2016,763
+Kronoberg,Uppvidinge,23,22,21,18,16,18,19,13,13,11,9,null,null,760
+Kronoberg,Växjö,42,32,37,40,39,null,33,30,21,13,null,80,2020,780
+Kronoberg,Älmhult,36,33,32,37,39,33,31,25,23,14,9,30,2016,765
+Kalmar,Borgholm,null,null,47,null,18,20,24,null,23,17,12,null,null,885
+Kalmar,Emmaboda,48,48,46,46,41,36,32,27,19,null,11,50,2018,862
+Kalmar,Hultsfred,23,23,26,25,22,14,8,10,3,3,2,null,null,860
+Kalmar,Högsby,33,31,25,24,23,null,null,null,null,17,null,null,null,821
+Kalmar,Kalmar,32,29,32,30,32,30,29,27,20,13,11,25,2016,880
+Kalmar,Mönsterås,31,36,35,33,32,34,34,31,22,17,15,null,null,861
+Kalmar,Mörbylånga,33,28,28,33,26,22,null,null,null,19,14,25,null,840
+Kalmar,Nybro,30,28,27,25,null,12,null,4,4,null,null,null,null,881
+Kalmar,Oskarshamn,25,28,23,22,12,11,9,9,8,null,null,25,2016,882
+Kalmar,Torsås,null,null,22,null,null,null,null,null,18,null,null,null,null,834
+Kalmar,Vimmerby,20,18,17,19,null,null,null,9,7,2,1,null,null,884
+Kalmar,Västervik,28,30,23,17,14,11,11,11,9,5,1,null,null,883
+Gotland,Region Gotland,31,30,26,26,24,21,21,20,17,13,10,25,2016,980
+Blekinge,Karlshamn,33,null,25,26,23,null,13,12,13,8,8,28,2016,1082
+Blekinge,Karlskrona,39,33,31,29,23,19,22,15,7,null,null,null,null,1080
+Blekinge,Olofström,35,28,27,13,8,3,4,3,3,1,null,25,2016,1060
+Blekinge,Ronneby,34,28,26,29,26,null,22,19,14,9,8,29,2016,1081
+Blekinge,Sölvesborg,26,29,29,26,18,16,20,13,9,7,null,25,2016,1083
+Skåne,Bjuv,null,null,10,13,9,15,14,14,11,11,10,null,null,1260
+Skåne,Bromölla,25,29,29,26,18,13,16,11,9,null,5,25,2016,1272
+Skåne,Burlöv,20,null,29,null,17,21,null,22,17,12,4,25,2020,1231
+Skåne,Båstad,20,null,29,28,26,20,20,19,13,null,null,25,2016,1278
+Skåne,Eslöv,57,52,40,35,33,35,28,26,17,11,11,60,2018,1285
+Skåne,Helsingborg,45,43,41,40,33,18,22,14,11,9,9,40,2016,1283
+Skåne,Hässleholm,38,33,31,33,29,18,17,14,10,7,7,null,null,1293
+Skåne,Höganäs,24,19,15,10,7,null,5,null,1,1,1,25,2016,1284
+Skåne,Hörby,null,33,30,30,32,30,19,13,2,null,4,null,null,1266
+Skåne,Höör,40,null,null,null,30,29,16,15,null,null,null,40,2020,1267
+Skåne,Klippan,4,null,null,4,0,0,null,0,0,null,0,null,null,1276
+Skåne,Kristianstad,41,38,35,35,30,20,18,13,11,11,null,40,2017,1290
+Skåne,Kävlinge,40,39,37,35,31,31,21,10,0,0,null,25,2016,1261
+Skåne,Landskrona,38,36,32,31,27,24,23,null,null,null,null,50,2020,1282
+Skåne,Lomma,26,26,23,20,17,14,15,16,9,0,2,25,null,1262
+Skåne,Lund,82,74,68,55,50,49,46,43,35,34,25,100,2020,1281
+Skåne,Malmö,65,63,59,53,44,37,39,33,27,23,24,100,2020,1280
+Skåne,Osby,33,32,null,23,21,15,7,18,14,3,null,null,null,1273
+Skåne,Perstorp,32,27,19,19,null,null,null,null,null,1,1,null,null,1275
+Skåne,Simrishamn,null,null,16,null,null,null,null,null,null,null,null,null,null,1291
+Skåne,Sjöbo,null,8,null,3,null,null,null,null,13,null,null,null,null,1265
+Skåne,Skurup,42,39,39,39,null,22,22,null,null,null,null,40,2016,1264
+Skåne,Staffanstorp,19,22,null,15,null,15,null,15,null,null,3,null,null,1230
+Skåne,Svalöv,29,29,29,null,null,24,null,null,4,4,2,null,null,1214
+Skåne,Svedala,40,40,36,28,27,25,27,28,26,23,22,50,2018,1263
+Skåne,Tomelilla,8,9,8,7,12,5,7,1,2,null,null,10,2020,1270
+Skåne,Trelleborg,21,31,38,34,28,25,20,16,11,11,3,35,null,1287
+Skåne,Vellinge,78,80,80,72,57,48,null,32,26,7,5,null,null,1233
+Skåne,Ystad,12,null,20,17,12,9,11,8,9,6,6,35,2020,1286
+Skåne,Åstorp,12,19,15,null,null,null,8,null,null,null,null,null,null,1277
+Skåne,Ängelholm,28,15,null,19,12,5,null,1,0,8,4,25,2017,1292
+Skåne,Örkelljunga,null,12,13,11,10,5,null,null,null,null,null,10,2016,1257
+Skåne,Östra Göinge,32,29,25,25,20,16,16,12,8,4,4,25,2016,1256
+Halland,Falkenberg,35,32,28,21,20,17,14,12,8,4,,null,null,1382
+Halland,Halmstad,38,37,32,31,31,25,18,8,7,6,4,25,null,1380
+Halland,Hylte,null,21,19,19,14,9,8,6,11,4,3,25,2016,1315
+Halland,Kungsbacka,36,36,27,26,25,17,16,12,10,12,10,30,2016,1384
+Halland,Laholm,null,null,10,12,null,null,4,null,0,0,0,null,null,1381
+Halland,Varberg,34,37,35,33,26,21,22,20,15,14,2,35,2016,1383
+Västra Götaland,Ale,43,36,33,28,25,null,17,16,15,15,17,40,2017,1440
+Västra Götaland,Alingsås,21,null,21,null,16,null,null,16,null,null,9,null,null,1489
+Västra Götaland,Bengtsfors,18,17,null,17,null,null,null,6,3,null,null,null,null,1460
+Västra Götaland,Bollebygd,42,39,36,35,null,19,12,null,0,null,null,35,2016,1443
+Västra Götaland,Borås,40,37,33,29,15,null,21,8,3,2,3,40,2016,1490
+Västra Götaland,Dals-Ed,21,22,24,22,null,null,18,null,3,1,0,null,null,1438
+Västra Götaland,Essunga,35,22,19,17,null,null,null,4,3,6,3,null,null,1445
+Västra Götaland,Falköping,24,24,26,19,19,20,19,19,13,10,null,25,2016,1499
+Västra Götaland,Färgelanda,19,null,null,null,null,null,null,null,7,0,0,null,null,1439
+Västra Götaland,Grästorp,33,28,24,24,22,19,null,null,null,null,null,30,2020,1444
+Västra Götaland,Gullspång,null,12,0,4,5,null,null,null,null,3,8,10,2020,1447
+Västra Götaland,Göteborg,46,46,47,45,33,27,23,21,16,15,13,40,2016,1480
+Västra Götaland,Herrljunga,35,40,35,38,null,27,15,null,10,null,null,25,2016,1466
+Västra Götaland,Hjo,21,18,18,17,14,10,23,5,4,null,2,25,null,1497
+Västra Götaland,Härryda,31,30,30,28,13,9,7,7,5,4,12,null,null,1401
+Västra Götaland,Karlsborg,21,21,18,null,null,4,null,11,null,null,0,25,2018,1446
+Västra Götaland,Kungälv,27,21,18,24,21,18,17,,11,9,,25,2016,1482
+Västra Götaland,Lerum,36,34,39,39,30,29,35,35,23,23,11,null,null,1441
+Västra Götaland,Lidköping,37,35,31,29,30,26,18,27,19,null,9,34,2016,1494
+Västra Götaland,Lilla Edet,19,30,19,25,20,14,10,10,6,6,0,null,null,1462
+Västra Götaland,Lysekil,14,21,17,null,null,18,18,15,12,9,null,null,null,1484
+Västra Götaland,Mariestad,14,13,21,20,16,12,null,8,2,2,0,null,null,1493
+Västra Götaland,Mark,30,27,30,31,31,26,24,22,18,13,14,null,null,1463
+Västra Götaland,Mellerud,18,24,22,14,10,null,null,null,3,1,null,null,null,1461
+Västra Götaland,Munkedal,17,18,17,null,null,7,3,null,null,null,null,25,null,1430
+Västra Götaland,Mölndal,31,28,26,27,11,9,8,4,8,3,null,25,null,1481
+Västra Götaland,Orust,47,45,37,32,29,null,null,8,5,3,2,35,2016,1421
+Västra Götaland,Partille,26,null,null,null,null,null,null,null,null,null,0,null,null,1402
+Västra Götaland,Skara och Götene,15,17,15,10,8,6,null,null,null,null,null,null,null,1471
+Västra Götaland,Skövde,22,19,21,25,18,11,0,10,null,null,null,20,2016,1496
+Västra Götaland,Sotenäs,20,14,16,null,null,null,null,null,null,null,null,null,null,1427
+Västra Götaland,Stenungsund,28,null,null,25,6,null,null,null,null,null,null,null,null,1415
+Västra Götaland,Strömstad,22,30,25,19,18,16,15,12,11,10,null,null,null,1486
+Västra Götaland,Svenljunga,33,33,null,31,20,19,16,12,11,5,5,25,2016,1465
+Västra Götaland,Tanum,50,35,40,41,37,35,33,29,21,21,15,50,2020,1435
+Västra Götaland,Tibro,20,26,25,21,15,null,null,6,null,1,null,null,null,1472
+Västra Götaland,Tidaholm,26,22,18,14,null,11,5,6,6,5,2,null,null,1498
+Västra Götaland,Tjörn,31,null,20,21,20,null,null,null,18,null,null,30,2016,1419
+Västra Götaland,Tranemo,36,36,33,31,null,null,null,10,8,null,null,20,2016,1452
+Västra Götaland,Trollhättan,38,33,30,26,17,16,15,11,8,9,12,21,2016,1488
+Västra Götaland,Töreboda,22,15,null,14,6,5,null,0,0,0,0,null,null,1473
+Västra Götaland,Uddevalla,25,21,16,15,null,null,13,7,6,4,null,30,2018,1485
+Västra Götaland,Ulricehamn,42,41,36,31,21,16,null,13,10,10,8,35,2020,1491
+Västra Götaland,Vara,20,22,null,10,7,4,null,null,null,null,null,null,null,1470
+Västra Götaland,Vårgårda,27,25,23,23,24,20,13,5,null,null,1,25,2019,1442
+Västra Götaland,Vänersborg,27,26,21,18,14,12,9,10,9,5,3,null,null,1487
+Västra Götaland,Åmål,20,22,null,16,13,5,null,null,3,1,null,null,null,1492
+Västra Götaland,Öckerö,28,37,40,36,29,22,17,22,15,6,null,25,2016,1407
+Värmland,Arvika,22,32,15,null,15,12,7,,5,,,null,null,1784
+Värmland,Eda,14,13,null,null,12,12,null,13,9,2,3,null,null,1730
+Värmland,Filipstad,21,21,16,12,7,null,1,null,null,0,null,15,2016,1782
+Värmland,Forshaga,27,22,16,16,14,9,6,5,4,null,0,25,null,1763
+Värmland,Grums,26,26,16,26,15,11,12,8,2,1,1,30,2016,1764
+Värmland,Hagfors,16,15,16,18,20,17,10,8,7,null,null,null,null,1783
+Värmland,Hammarö,24,25,16,31,25,25,24,20,15,null,5,30,2016,1761
+Värmland,Karlstad,31,32,16,25,23,21,23,20,18,13,8,50,2020,1780
+Värmland,Kil,28,31,16,32,27,24,20,18,20,9,7,30,2018,1715
+Värmland,Kristinehamn,35,33,16,25,22,19,18,15,13,12,0,25,2016,1781
+Värmland,Munkfors,23,19,16,12,10,11,13,null,10,5,null,null,null,1762
+Värmland,Storfors,18,18,null,0,0,0,0,null,null,null,null,null,null,1760
+Värmland,Sunne,22,29,25,22,18,9,5,null,null,null,null,null,null,1766
+Värmland,Säffle,22,null,null,17,null,null,null,null,3,2,null,null,null,1785
+Värmland,Torsby,null,16,null,15,13,8,null,null,null,1,null,null,null,1737
+Värmland,Årjäng,null,null,null,null,null,null,null,null,2,2,2,null,null,1765
+Örebro,Askersund,32,33,null,41,21,22,19,null,2,1,0,null,null,1882
+Örebro,Hallsberg,28,29,29,null,25,23,null,25,16,5,5,null,null,1861
+Örebro,Hällefors,33,36,41,33,32,20,13,13,null,7,5,25,2016,1863
+Örebro,Karlskoga-Degerfors,23,40,30,29,13,9,7,6,null,2,null,20,2016,1883
+Örebro,Kumla,28,33,null,null,null,null,null,18,18,17,5,null,null,1881
+Örebro,Laxå,35,31,36,null,null,19,null,null,null,null,null,25,2018,1860
+Örebro,Lekeberg,37,33,29,13,25,null,null,null,4,2,1,33,2016,1814
+Örebro,Lindesberg,31,33,null,null,26,21,16,16,7,4,4,null,null,1885
+Örebro,Ljusnarsberg,33,35,26,14,null,11,null,null,null,null,null,null,null,1864
+Örebro,Nora,30,32,33,33,33,31,15,18,9,8,null,32,2016,1884
+Örebro,Örebro,64,64,59,51,41,33,32,33,22,14,11,80,2018,1880
+Västmanland,Arboga,39,37,33,28,25,17,12,8,6,2,0,null,null,1984
+Västmanland,Fagersta,22,null,null,18,15,null,null,6,4,2,null,null,null,1982
+Västmanland,Hallstahammar,34,31,28,19,12,15,null,null,null,null,null,null,null,1961
+Västmanland,Kungsör,39,29,27,null,null,null,null,null,7,3,null,null,null,1960
+Västmanland,Köping,31,31,29,24,19,15,11,9,6,2,1,30,2016,1983
+Västmanland,Norberg,null,null,null,null,null,null,null,null,null,0,null,null,null,1962
+Västmanland,Sala,38,36,34,31,28,25,22,15,null,null,null,null,null,1981
+Västmanland,Skinnskatteberg,null,null,25,14,null,20,24,null,5,2,null,20,2016,1904
+Västmanland,Surahammar,24,23,null,4,null,0,10,null,0,0,0,null,null,1907
+Västmanland,Västerås,49,48,48,43,38,31,32,23,18,14,13,50,2016,1980
+Dalarna,Avesta,27,null,29,null,26,null,null,18,11,9,6,null,null,2084
+Dalarna,Borlänge,61,49,34,40,50,49,46,31,19,16,15,100,2020,2081
+Dalarna,Falun,19,null,22,19,24,24,14,13,11,10,8,null,null,2080
+Dalarna,Gagnef,32,31,31,34,29,27,null,null,null,null,null,25,2016,2026
+Dalarna,Hedemora,30,29,28,26,27,25,null,18,16,15,15,30,2016,2083
+Dalarna,Leksand,21,19,18,22,18,7,null,1,0,0,0,25,2018,2029
+Dalarna,Ludvika,41,39,34,35,34,28,27,26,25,22,21,60,2018,2085
+Dalarna,Malung-Sälen,31,32,28,18,17,null,null,2,null,3,1,null,null,2023
+Dalarna,Mora,29,31,34,null,null,null,27,18,12,null,6,null,null,2062
+Dalarna,Orsa,28,26,28,34,null,21,14,11,9,9,11,25,null,2034
+Dalarna,Rättvik,32,31,29,25,26,26,20,22,30,null,18,null,null,2031
+Dalarna,Smedjebacken,29,29,34,29,null,null,null,25,23,17,16,null,null,2061
+Dalarna,Säter,null,null,null,null,32,30,31,21,18,14,null,null,null,2082
+Dalarna,Vansbro,22,19,20,null,20,8,null,null,null,null,null,null,null,2021
+Dalarna,Älvdalen,20,17,17,null,8,null,null,null,0,0,null,null,null,2039
+Gävleborg,Bollnäs,12,null,null,null,null,12,null,null,null,null,null,null,null,2183
+Gävleborg,Gävle,41,41,41,38,30,27,26,26,20,15,11,50,2020,2180
+Gävleborg,Hofors,null,null,null,16,12,7,7,6,,7,,15,2016,2104
+Gävleborg,Hudiksvall,25,25,24,19,null,null,13,13,9,5,3,25,2016,2184
+Gävleborg,Ljusdal,null,15,14,null,null,null,null,null,null,null,0,null,null,2161
+Gävleborg,Nordanstig,null,null,11,null,19,15,13,12,null,3,2,null,null,2132
+Gävleborg,Ockelbo,46,47,40,43,36,33,36,35,31,11,null,35,null,2101
+Gävleborg,Ovanåker,null,22,15,null,null,9,12,12,9,8,1,25,2017,2121
+Gävleborg,Sandviken,32,28,24,27,27,21,22,26,16,18,9,30,2016,2181
+Gävleborg,Söderhamn,24,21,19,14,13,13,21,null,10,6,2,15,null,2182
+Västernorrland,Härnösand,30,30,29,29,null,24,4,2,null,6,0,30,2016,2280
+Västernorrland,Kramfors,30,30,27,27,null,null,18,12,null,null,4,50,2018,2282
+Västernorrland,Sollefteå,25,25,25,19,20,14,10,6,4,3,,25,2016,2283
+Västernorrland,Sundsvall,32,30,30,26,18,13,13,13,11,8,0,50,2018,2281
+Västernorrland,Timrå,25,25,null,21,17,0,null,null,null,null,null,25,2020,2262
+Västernorrland,Ånge,18,18,null,19,10,10,6,5,4,,2,20,null,2260
+Västernorrland,Örnsköldsvik,31,30,30,27,21,null,10,5,null,2,1,50,2018,2284
+Jämtland,Berg,null,null,null,null,null,null,null,null,null,3,5,null,null,2326
+Jämtland,Bräcke,18,null,20,20,null,null,null,null,null,null,null,null,null,2305
+Jämtland,Härjedalen,null,null,null,18,19,15,16,13,6,5,null,null,null,2361
+Jämtland,Krokom,25,null,null,18,15,14,14,11,9,null,10,20,null,2309
+Jämtland,Ragunda,18,null,null,9,null,null,9,null,null,3,1,null,null,2303
+Jämtland,Strömsund,null,null,null,10,null,null,null,null,0,null,0,null,null,2313
+Jämtland,Åre,50,43,29,32,32,32,33,31,29,27,24,30,2016,2321
+Jämtland,Östersund,34,30,26,20,18,19,null,22,17,15,null,50,2020,2380
+Västerbotten,Bjurholm,null,27,null,24,25,17,null,13,null,null,null,null,null,2403
+Västerbotten,Dorotea,null,null,12,2,5,null,8,null,null,null,null,null,null,2425
+Västerbotten,Lycksele,null,15,null,null,null,null,null,null,null,null,null,null,null,2481
+Västerbotten,Malå,25,null,12,null,null,null,null,null,null,0,null,null,null,2418
+Västerbotten,Nordmaling,null,null,11,null,null,null,null,null,null,null,null,25,2016,2401
+Västerbotten,Norsjö,null,null,null,null,null,null,12,7,null,0,0,15,2016,2417
+Västerbotten,Robertsfors,null,22,18,23,null,null,null,null,null,null,null,null,null,2409
+Västerbotten,Skellefteå,null,14,11,13,13,12,null,8,3,null,null,null,null,2482
+Västerbotten,Sorsele,null,null,null,11,6,null,null,null,null,1,0,null,null,2422
+Västerbotten,Storuman,8,null,null,null,null,null,null,null,null,null,null,null,null,2421
+Västerbotten,Umeå,15,26,25,25,27,27,21,20,8,10,,30,2016,2480
+Västerbotten,Vilhelmina,null,null,11,11,8,4,10,5,2,1,5,null,null,2462
+Västerbotten,Vindeln,null,20,null,null,null,null,null,null,0,2,3,null,null,2404
+Västerbotten,Vännäs,24,23,22,17,17,null,null,6,5,0,null,25,2018,2460
+Västerbotten,Åsele,null,null,13,null,null,0,null,0,null,null,null,null,null,2463
+Norrbotten,Arjeplog,null,13,16,18,null,null,null,null,null,null,null,25,2016,2506
+Norrbotten,Arvidsjaur,12,11,10,null,15,9,null,null,2,2,4,null,null,2505
+Norrbotten,Boden,25,20,17,null,7,null,null,6,null,null,4,null,null,2582
+Norrbotten,Gällivare,25,null,21,15,null,null,null,null,0,null,null,null,null,2523
+Norrbotten,Haparanda,29,null,21,24,21,null,14,null,null,null,1,25,2017,2583
+Norrbotten,Jokkmokk,14,null,19,24,21,null,null,null,null,null,null,30,null,2510
+Norrbotten,Kalix,32,17,17,17,17,11,9,null,null,null,null,15,2016,2514
+Norrbotten,Kiruna,25,26,25,null,22,18,17,10,null,12,null,null,null,2584
+Norrbotten,Luleå,23,null,null,null,15,null,null,null,null,null,null,25,2018,2580
+Norrbotten,Pajala,18,17,19,17,null,19,null,null,0,null,null,null,null,2521
+Norrbotten,Piteå,11,9,null,8,null,null,12,8,null,null,null,20,2016,2581
+Norrbotten,Älvsbyn,null,null,null,9,10,10,null,null,null,null,null,null,null,2560
+Norrbotten,Överkalix,null,null,null,null,null,null,null,null,null,null,null,null,null,2513
+Norrbotten,Övertorneå,null,null,null,null,23,null,null,18,15,8,3,25,2016,2518

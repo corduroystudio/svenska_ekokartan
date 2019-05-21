@@ -1,61 +1,72 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>
-    Svenska Eko-Kartan
-</title>
-<meta charset="utf-8">
-<meta name="description" content="Visualising organic food purchases by public sector in Sweden">
-<meta name="keywords" content="Data visualisation, datavisualisering, sweden, sverige, ekomat, organic food, kommuner, landsting">
-<meta name="author" content="Geoshepherds">
-<meta name="google-site-verification" content="vXI3GiTjYOr4W2ffSu_0AXwsz3qmImdGq41PqyR9wxs">
-<link rel="icon" href="media/favicon.ico">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <title>
+        Svenska Eko-Kartan
+    </title>
+    <meta charset="utf-8">
+    <meta name="description" content="Visualising organic food purchases by public sector in Sweden">
+    <meta name="keywords" content="Data visualisation, datavisualisering, sweden, sverige, ekomat, organic food, kommuner, landsting">
+    <meta name="author" content="Geoshepherds">
+    <meta name="google-site-verification" content="vXI3GiTjYOr4W2ffSu_0AXwsz3qmImdGq41PqyR9wxs">
+    <link rel="icon" href="media/favicon.ico">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<link rel="stylesheet" href="styles/jquery-ui.min.css">
-<link rel="stylesheet" href="styles/svekostyle.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src=scripts/jquery-ui.min.js></script>
-<script>
-  //twitter  
-  window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };    
- 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+    <link rel="stylesheet" href="./styles/jquery-ui.min.css">
+    <link rel="stylesheet" href="./styles/svekostyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src=./scripts/jquery-ui.min.js></script>
+    <script>
+        //twitter
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
 
 </head>
-    
+
 <body>
-    
-<!--    INTRO    -->
+
+    <!--    INTRO    -->
     <div id="introUI">
         <div id="sky"></div>
         <div id="grass"></div>
         <div id="contentIntroWrapper">
             <h1>Svenska Eko-Kartan</h1>
-            <div id="contentIntroUI"> 
-                <p class="large">Följ utbredningen av <span>ekologiskt i Sverige</span> och upptäck vilka kommuner som väljer mest ekologisk mat till sina offentliga kök som skolor, förskolor och äldreomsorg.</p>  
-                <p class="large">Utforska kartan och graferna för att se varje läns utveckling och få reda på hur din kommun ligger till. Under fliken Statistik ser du vilken graf som är aktiv. Här får du även tillgång till ännu mer spännande information genom att klicka på de olika statistikkategorierna.</p>
-                <p class="source">Kartan och graferna visar ekologiska inköp, i procent av totala livsmedelsinköp, i Sveriges kommuner och landsting.
-    <br>Källa: <a href="http://ekomatcentrum.se" target="_blank">EkoMatCentrum</a> - Ekologiskt i offentlig storhushåll 2015 Rapport 2016; <a href="http://dkab.se" target="_blank">DKAB</a></p>
-                <p class="source">Visualisering av <a href="http://geoshepherds.com" target="_blank">Geoshepherds</a></p>
+            <div id="contentIntroUI">
+                <p class="large">Följ utbredningen av
+                    <span>ekologiskt i Sverige</span> och upptäck vilka kommuner som väljer mest ekologisk mat till sina offentliga
+                    kök som skolor, förskolor och äldreomsorg.</p>
+                <p class="large">Utforska kartan och graferna för att se varje läns utveckling och få reda på hur din kommun ligger till.
+                    Under fliken Statistik ser du vilken graf som är aktiv. Här får du även tillgång till ännu mer spännande
+                    information genom att klicka på de olika statistikkategorierna.</p>
+                <p class="source">Kartan och graferna visar ekologiska inköp, i procent av totala livsmedelsinköp, i Sveriges kommuner och
+                    landsting.
+                    <br>Källa:
+                    <a href="http://ekomatcentrum.se" target="_blank">EkoMatCentrum</a> - Ekologiskt i offentlig storhushåll 2018 Rapport 2019;
+                    <a href="http://dkab.se" target="_blank">DKAB</a>
+                </p>
+                <p class="source">Visualisering av
+                    <a href="http://geoshepherds.com" target="_blank">Geoshepherds</a>
+                </p>
             </div>
             <div class="loader"></div>
             <div id="isLoading" class="waiting">Till kartan</div>
@@ -65,66 +76,102 @@
 
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153.8 464.8">
             <style>
-                .st0{fill:none;stroke:#1C764E;stroke-miterlimit:10;} .st1{fill:#1C764E;stroke:#1C764E;stroke-miterlimit:10;} .st2{fill:#63B146;stroke:#1C764E;stroke-miterlimit:10;}
+                .st0 {
+                    fill: none;
+                    stroke: #1C764E;
+                    stroke-miterlimit: 10;
+                }
+
+                .st1 {
+                    fill: #1C764E;
+                    stroke: #1C764E;
+                    stroke-miterlimit: 10;
+                }
+
+                .st2 {
+                    fill: #63B146;
+                    stroke: #1C764E;
+                    stroke-miterlimit: 10;
+                }
             </style>
             <g id="XMLID_1_">
-                <path id="XMLID_29_" class="st1" d="M60.6 358.3c1.3-9.8.1-36.5 0-44.6 0-1.5-.6-2.9-1.5-4.1l-5.4-6.3c-.2-.3-.5-.5-.7-.7l-1.4-1c-2.9-2.1-5.1-5.2-6.1-8.7l-1.9-6.2c-.1-.4-.2-.9-.3-1.3l-1.2-9.6c-.2-1.3-.6-2.6-1.4-3.7L25.1 249c-.4-.6-.7-1.2-1-1.8l-7.5-17.4c-.8-1.8-1.3-3.8-1.5-5.8l-.3-11.7c0-1.7.3-3.4 1.1-4.9L24 192c.3-.6.6-1.3.8-1.9l3.6-12.5c.2-.5.3-1.1.3-1.6l2.1-20.7c.1-1.1.1-2.3-.2-3.4l-3.9-20.1c-.3-1.5-.5-3.1-.5-4.7v-12.9c0-1.9.3-3.8.9-5.6l3-8.7c.5-1.4 1.2-2.7 2.1-3.8l6.8-8.4c1.8-2.2 3-4.9 3.5-7.7l1.2-6.7 2.9-19.2c.3-1.9.8-3.7 1.6-5.4l5-11.2c.4-.9.9-1.8 1.4-2.6l12.1-18.3c.1-.2.3-.4.4-.6l8.6-11.1c.9-1.1 1.9-2.1 3.1-2.9l2-1.3 7.6 3.8c1.2.6 2.2 1.3 3.2 2.1l7.8 7.4c1.6 1.5 2.9 3.2 3.8 5.1l6.5 11.7c1 1.7 1.7 3.6 2.1 5.5l3.3 14.6c.2.9.3 1.8.3 2.7v.4c0 3.3.7 6.6 2.1 9.6l3.2 7c1.5 3.3 2.3 6.8 2.3 10.4v8.6c0 3-.6 6-1.9 8.8l-7.2 16.1c-.1.3-.2.5-.4.8l-8.6 16.2c-1.1 2.2-2 4.5-2.5 6.9l-1.8 8.6c-.5 2.5-.5 5.1.2 7.6l2.4 9.2c.6 2.3 1.7 4.5 3.1 6.3l11.1 14.1c.4.5.8 1 1.1 1.6l1.8 3.3c1.8 3.2 2.7 6.8 2.7 10.4v3.2c0 4.5-1.2 8.8-3.6 12.6l-10.8 17.6c-.6.9-1 2-1.4 3l-2.7 8.7c-.1.4-.2.9-.3 1.3l-2.4 14.7c0 .2-.1.3-.1.5l-2.3 9.9c-.1.3-.1.6-.2.9l-3.7 12.3c-.8 2.7-2.5 5-4.7 6.7l-9.8 7.4-6.1 4.7c-2 1.6-3.3 4-3.5 6.5l-1.8 25.6c0 .3.4.5.6.2l7.6-12c.2-.3.5-.7.8-1L90.9 310c.7-.7 1.3-1.6 1.8-2.5l9.8-20.2c.6-1.2.8-2.5.8-3.8l-.3-5v-.8l.5-5.2c.2-1.6.6-3.2 1.3-4.6l4.2-8.6c.1-.3.3-.5.4-.8l5.5-8.5c.3-.4.9-.3 1 .2l.9 6.5c.2 1.5 0 2.9-.5 4.3l-4.1 10.7-.3.6-5.5 10.7-1.9 5.7-7 15.9c-.2.5.4.9.8.5l17.5-19.8 10.8-14.6c.3-.4.5-.8.7-1.3.4-1.1 1.2-3.1 1.2-3.8 0-.6-.5-5.5-.8-8.7-.2-1.7 0-3.4.6-4.9l1.9-5.3c.3-.8.7-1.5 1.2-2.2l4.3-5.9c1-1.3 2.2-2.3 3.7-3l7.1-3.7c.7-.3 1.5.3 1.3 1.1l-2.1 8.2c-.4 1.5-.6 3.1-.6 4.6v7.8l-.1 2c-.1 2.6-1.1 5.2-2.8 7.2l-3.9 4.6-.3.3-16.7 16.5-35.9 39.7c-1.1 1.3-2.1 2.6-2.9 4.1l-9.1 16.5c-.2.3-.3.6-.5 1l-2.1 5.4c-1.1 2.8-1.6 5.7-1.6 8.7l.1 4.3s2.5 15.8 4.4 20.7c23.9 61.9 77 79.6 77 79.6H4.4c0 .1 43.8-9.9 56.2-105.9z"/>
+                <path id="XMLID_29_" class="st1" d="M60.6 358.3c1.3-9.8.1-36.5 0-44.6 0-1.5-.6-2.9-1.5-4.1l-5.4-6.3c-.2-.3-.5-.5-.7-.7l-1.4-1c-2.9-2.1-5.1-5.2-6.1-8.7l-1.9-6.2c-.1-.4-.2-.9-.3-1.3l-1.2-9.6c-.2-1.3-.6-2.6-1.4-3.7L25.1 249c-.4-.6-.7-1.2-1-1.8l-7.5-17.4c-.8-1.8-1.3-3.8-1.5-5.8l-.3-11.7c0-1.7.3-3.4 1.1-4.9L24 192c.3-.6.6-1.3.8-1.9l3.6-12.5c.2-.5.3-1.1.3-1.6l2.1-20.7c.1-1.1.1-2.3-.2-3.4l-3.9-20.1c-.3-1.5-.5-3.1-.5-4.7v-12.9c0-1.9.3-3.8.9-5.6l3-8.7c.5-1.4 1.2-2.7 2.1-3.8l6.8-8.4c1.8-2.2 3-4.9 3.5-7.7l1.2-6.7 2.9-19.2c.3-1.9.8-3.7 1.6-5.4l5-11.2c.4-.9.9-1.8 1.4-2.6l12.1-18.3c.1-.2.3-.4.4-.6l8.6-11.1c.9-1.1 1.9-2.1 3.1-2.9l2-1.3 7.6 3.8c1.2.6 2.2 1.3 3.2 2.1l7.8 7.4c1.6 1.5 2.9 3.2 3.8 5.1l6.5 11.7c1 1.7 1.7 3.6 2.1 5.5l3.3 14.6c.2.9.3 1.8.3 2.7v.4c0 3.3.7 6.6 2.1 9.6l3.2 7c1.5 3.3 2.3 6.8 2.3 10.4v8.6c0 3-.6 6-1.9 8.8l-7.2 16.1c-.1.3-.2.5-.4.8l-8.6 16.2c-1.1 2.2-2 4.5-2.5 6.9l-1.8 8.6c-.5 2.5-.5 5.1.2 7.6l2.4 9.2c.6 2.3 1.7 4.5 3.1 6.3l11.1 14.1c.4.5.8 1 1.1 1.6l1.8 3.3c1.8 3.2 2.7 6.8 2.7 10.4v3.2c0 4.5-1.2 8.8-3.6 12.6l-10.8 17.6c-.6.9-1 2-1.4 3l-2.7 8.7c-.1.4-.2.9-.3 1.3l-2.4 14.7c0 .2-.1.3-.1.5l-2.3 9.9c-.1.3-.1.6-.2.9l-3.7 12.3c-.8 2.7-2.5 5-4.7 6.7l-9.8 7.4-6.1 4.7c-2 1.6-3.3 4-3.5 6.5l-1.8 25.6c0 .3.4.5.6.2l7.6-12c.2-.3.5-.7.8-1L90.9 310c.7-.7 1.3-1.6 1.8-2.5l9.8-20.2c.6-1.2.8-2.5.8-3.8l-.3-5v-.8l.5-5.2c.2-1.6.6-3.2 1.3-4.6l4.2-8.6c.1-.3.3-.5.4-.8l5.5-8.5c.3-.4.9-.3 1 .2l.9 6.5c.2 1.5 0 2.9-.5 4.3l-4.1 10.7-.3.6-5.5 10.7-1.9 5.7-7 15.9c-.2.5.4.9.8.5l17.5-19.8 10.8-14.6c.3-.4.5-.8.7-1.3.4-1.1 1.2-3.1 1.2-3.8 0-.6-.5-5.5-.8-8.7-.2-1.7 0-3.4.6-4.9l1.9-5.3c.3-.8.7-1.5 1.2-2.2l4.3-5.9c1-1.3 2.2-2.3 3.7-3l7.1-3.7c.7-.3 1.5.3 1.3 1.1l-2.1 8.2c-.4 1.5-.6 3.1-.6 4.6v7.8l-.1 2c-.1 2.6-1.1 5.2-2.8 7.2l-3.9 4.6-.3.3-16.7 16.5-35.9 39.7c-1.1 1.3-2.1 2.6-2.9 4.1l-9.1 16.5c-.2.3-.3.6-.5 1l-2.1 5.4c-1.1 2.8-1.6 5.7-1.6 8.7l.1 4.3s2.5 15.8 4.4 20.7c23.9 61.9 77 79.6 77 79.6H4.4c0 .1 43.8-9.9 56.2-105.9z"
+                />
                 <g id="XMLID_270_">
-                    <path id="XMLID_372_" class="st2" d="M61.5 304.8l-4.8-5.5-.3-.3-4.3-3.8c-.8-.7-1.5-1.7-1.9-2.7l-2.8-7.2c-.1-.2-.1-.4-.2-.7l-2.2-12c-.1-.4-.2-.7-.4-1.1l-4.7-8.4c0-.1-.1-.2-.2-.3l-9.6-13.7c-.1-.2-.2-.3-.3-.5L21.3 234c-.1-.3.2-.6.4-.4l7.2 4.7c.1.1.2.1.2.2l15.7 13.4 10.7 11.3c.3.4.7.8.9 1.2l4.9 7.3c1.5 2.1 2.2 4.7 2.2 7.3l-.4 25.3c.1.8-1 1.2-1.6.5z"/>
-                    <path id="XMLID_371_" class="st2" d="M69.4 300.6l-.5-2.6c-.3-1.5-.3-3-.2-4.4l1-9.2c0-.2.1-.5.1-.7l2.7-9.1c.4-1.2 1-2.2 1.9-3.1l7.8-8.3.5-.5 11.2-8.9c.2-.1.4-.3.6-.4l6.5-4c.5-.3 1.2.2 1 .8L98.4 267c0 .2-.1.3-.1.5l-3.8 13.2c-.1.4-.2.7-.4 1l-1.8 3.1c-.9 1.5-2.1 2.8-3.5 3.8l-9.3 6.4-1.5 1.2-5 4.4-1.2.9c-.9.7-2.2.2-2.4-.9z"/>
-                    <path id="XMLID_370_" class="st2" d="M64.4 264.2c-.1.7-1 1.1-1.5.5l-8.3-9.1-9.7-9.2-.1-.1-8.9-7.5c-.1-.1-.2-.1-.2-.2l-13.4-9.3c-.1-.1-.3-.2-.4-.3l-1.9-1.9c-1.6-1.6-2.6-3.9-2.6-6.2v-5.3c0-2.6.6-5.2 1.8-7.5l5-11.5c.6-1.1 1.9-1.6 3.1-1.2l3.9 2.4 10.2 7c.1.1.2.2.3.2l10.8 9.2c1.1.9 2 2 2.7 3.2l5.5 8.4c1.2 1.9 2.6 4 2.9 6.1l1.4 18.7c.1.6.1 1.3 0 2l-.6 11.6z"/>
-                    <path id="XMLID_369_" class="st2" d="M69.4 270.7l-.9-14.2v-1.3l3.6-21.9c.1-.6.3-1.3.5-1.9l1-2.5c1.1-2.8 3-5.2 5.5-6.9l6-4 10.5-6.8c.8-.5 1.7-1 2.6-1.3l9.4-3.1 6.8-2.3c.4-.1.9-.2 1.3-.2l3.5-.2c.5 0 .8.5.6.9l-5.2 11.7c-.1.3-.3.6-.5.9l-5.9 8.7c-.2.4-.5.8-.6 1.2l-3.8 9.2-2.4 7.7c-.3.8-.9 1.5-1.6 1.9l-8.9 4.4c-.8.4-1.5.9-2.2 1.5l-10 9.1c-.5.5-1 1-1.4 1.6l-6.2 8.1c-.6 2.2-1.7 1.1-1.7-.3z"/>
-                    <path id="XMLID_368_" class="st2" d="M63.5 225l-2.3-5.1c-.6-1.3-1.4-2.5-2.4-3.5l-6.2-6.2-.3-.3-9.4-7.3-6.3-5c-.2-.2-.4-.3-.6-.5l-6.1-3.5c-1-.7-1.7-1.8-1.7-3l.4-3.7c0-.2.1-.5.1-.7l3-12.7c.1-.3.1-.6.1-.9l1-10.1v-1.3l-.3-1.7c-.1-.7.7-1.2 1.3-.8l4.8 3.6c.2.1.3.3.5.4l8.9 9.1c.2.2.5.5.7.8l5.8 7.5c.2.2.3.4.5.7l8.4 11.4c1 1.7 1.7 3.6 1.9 5.6l.9 10.4v1.3l-.9 15.6c-.2.5-1.6.2-1.8-.1z"/>
-                    <path id="XMLID_363_" class="st2" d="M70.2 223.6c-.9.6-1.5.2-1.5-.4.1-2.7-.2-8.5-.2-9.2 0-.8 2.8-15.2 3.3-17.6 0-.2.1-.5.2-.7l1-3.2c.8-2.7 2.4-5 4.4-6.9l11.1-9.6c.3-.3.7-.6 1.1-.8l7.3-4.6c.5-.3 1-.5 1.6-.7l2.4-.8c.8-.2 1.7.1 2.3.8l4 6.1 7.4 8.3c.6.7 1.1 1.4 1.5 2.2l2.6 5.4c.5 1.1 1.6 2.3 1.6 3.6l-.2 1.5c0 1.7-.9 3.3-2.4 4.1l-1.8.3-4.4.3c-.9.1-1.8.3-2.7.6l-17.3 6.6c-.5.2-1 .4-1.5.7l-9.7 5.7c-.7.4-1.3.8-1.9 1.4l-6.7 5.9-1.5 1z"/>
-                    <path id="XMLID_362_" class="st2" d="M66.3 186.2c0 .4-.6.5-.8.2l-5.4-8.3c-.1-.2-.3-.4-.5-.6l-8.1-8.7c-.5-.6-1-1.1-1.7-1.5l-8.5-6.7c-.1-.1-.2-.1-.3-.2l-6-5.5c-1-.9-1.6-2.1-1.9-3.3l-1.9-9.4c0-.2-.1-.4-.1-.5l-2-11.9c0-.2-.1-.5-.1-.7l-1-9.4c0-.8.8-1.4 1.5-1l3.6 1.9.1.1 5.5 3.6 10.4 6.6c.4.2.7.5 1.1.8l7.9 7.3.5.5 6 7.6c.2.3.4.5.5.8l1.5 2.1c1.3 1.9 1.9 4.2 1.7 6.5l-2 29.7z"/>
-                    <path id="XMLID_361_" class="st2" d="M72.4 187.6c-.9 1.4-1.5.8-1.1-.5l1.3-17.8 1.4-12.9c.1-.7.2-1.4.4-2.1.6-2.1 1.7-4.1 3.2-5.7 1.1-1.2 2.3-2.6 3.1-3.4.5-.6 1.2-1.2 1.8-1.6l11.6-8.6 10-8.3c.3-.3.8.1.6.5l-2.3 4.2c-.4.7-.7 1.5-.9 2.2L98 146.9c-.1.3-.1.6-.2 1l-.4 4.5c-.2 1.8.4 3.5.8 5.3l1.3 3.6c.3 1.1-.2 2.3-1.2 2.9l-8.1 4.5c-.3.1-.5.3-.8.5l-6.5 5.1c-1.7 1.3-3.2 3-4.4 4.8l-3.8 5.8c-.1.1-.2.2-.3.4l-2 2.3z"/>
-                    <path id="XMLID_360_" class="st2" d="M67.3 145.1l-4.9-5.3-7.6-9-.3-.3-11.3-8c-.1-.1-.2-.2-.4-.2l-8.5-4.5-4.6-2.2c-.6-.3-1-1-.9-1.7l1.4-7.2c.1-.3.1-.6.2-.8l2.4-6.5c.2-.7.6-1.3 1-1.9l3.6-4.7c.3-.4.6-.7.9-1l3-2.6c.9-.8 2.9-2 4.1-2l4.3.6c1.6 0 3.2.8 4.4 1.9l5.6 5.1.3.3 7.2 9.3c.2.2.3.5.5.7l3.9 7.7c.8 1.6 1 3.4.7 5.1-.4 1.8-1.1 3.8-1.4 4.4-.4 1.1-1.5 9.6-1.7 11.3v8.2l.1 2.3c-.1 1.1-1.3 1.6-2 1z"/>
-                    <path id="XMLID_359_" class="st2" d="M73.1 146.1l.4-7.1c0-1.1 0-2.2.2-3.2l1.4-12c0-.2.1-.4.1-.6l2.1-8.4c.1-.2.2-.5.3-.7l1.9-3.9c.7-1.4 1.6-2.7 2.7-3.8l5.6-5.4 9.1-8 7.8-6.5 4.6-3.8c.2-.1.4-.3.6-.4L119 77c1.2-.5 2.5.4 2.4 1.7L119.6 92c-.1.4-.1.8-.3 1.2l-3.6 12.4c-.3 1-.7 2-1.3 2.9l-5.3 8.7c-.9 1.4-2 2.7-3.4 3.6l-18 12.3-9.9 8.8c-.8.7-1.5 1.5-2 2.4l-1.5 2.4c-.3.4-1.2.1-1.2-.6z"/>
-                    <path id="XMLID_358_" class="st2" d="M72.4 109l-1.9-4.7c-.4-.9-.8-1.7-1.4-2.4l-6.7-8.4c-.1-.1-.2-.3-.3-.4l-5.6-5.6c-.6-.6-1.3-1.2-2.1-1.6l-3.6-2.1-1.5-.9c-1.4-.9-2.5-2.3-2.9-4-.5-2.2-.6-4.5-.2-6.7L48 61l2.4-9.6c.4-1.2 1.9-1.6 2.8-.8l2.1 2.5 5.1 5.1c.1.1.2.1.2.2l8.3 6.7c1.3 1.1 2.4 2.4 3.2 3.8l3.4 6.2c.3.5.5 1 .7 1.5l.9 2.6c.7 2 1.8 4.2 1.5 6.2l-2.3 14.1c-.1.4-.1.8-.3 1.2l-2.3 8.4c-.1.6-1.1.6-1.3-.1z"/>
-                    <path id="XMLID_357_" class="st2" d="M77.4 106.4l2.7-7.8c.1-.4.3-.9.3-1.3.4-2.6 2-12.1 2-12.8v-6.2c0-2.5.6-4.9 1.8-7l4.9-8.9.9-1.5 7.5-10.3 4.4-6.8 2.5-3.2 3.7-5.2c.6-.9 2-.6 2.3.4l1.3 8v.3l.3 4.2v1.2l-.9 8.1c-.2 1.5 0 3 .5 4.4.4 1.1.9 2.1 1.5 3.1l4.3 5.9c.6.9.5 2.2-.4 2.9l-3.9 1.7-.6.3-8.9 5.5c-.2.1-.4.3-.6.5L90.9 93.1l-6.3 5.5-.4.4-3.8 4.4-2.4 3.3c-.3.3-.7 0-.6-.3z"/>
-                    <path id="XMLID_356_" class="st2" d="M77.4 70.3l-1.6-2.7c-1.1-1.8-2.5-3.4-4.3-4.5l-3.6-2.4-.9-.6-6.3-5.4c-.3-.3-.6-.5-.8-.9l-2.4-2.9c-1.1-1.3-1.8-2.8-2.1-4.5l-.3-1.4c-.2-1 0-2 .4-2.9L61.9 30l7.3-13 1.3-1.8c.4-.6 1.2-.5 1.6.1l3.4 8.3.3.9 2.4 7.8 1.7 7.4c.3 1.2.4 2.5.4 3.8v5.1L79.5 66v.2c-.1.6-.2 1.2-.4 1.8l-.7 2c0 .5-.7.7-1 .3z"/>
-                    <path id="XMLID_278_" class="st2" d="M83.1 64.8l.4-4.4.7-3.9c.1-.4.1-.8.1-1.2V44c0-.9.1-1.7.3-2.6l1.7-6.9c.1-.6.4-1.2.6-1.8l3.6-7.6 3.6-5.9 1.7-3.6c.6-1 2-1 2.7-.1l4.3 6.1c.3.4.5.8.7 1.2l2.2 3.6c1 2.3.9 5-.3 7.2l-1.1 1.6c-.2.3-.4.5-.6.8L96 43.4c-.2.2-.3.3-.4.5l-5.7 9.9-5.6 11.3c-.4.6-1.2.4-1.2-.3z"/>
-                    <path id="XMLID_277_" class="st2" d="M73.6 11.5L75 9.8c.2-.2.4-.5.7-.7l3.5-4.6c.6-.5 1.5 0 1.5.7v22.2c0 .4-.6.5-.7.1l-3.7-8.4-.3-.6-2.6-4.9c-.4-.5-.3-1.4.2-2.1z"/>
-                    <path id="XMLID_276_" class="st2" d="M82.2 5.5L82 27.8c0 .7.9 1 1.3.4l4.3-6.6c.1-.1.1-.2.2-.3l4.6-8.1c.6-1.2.6-2.6-.2-3.7l-.2-.3c-.8-1.2-2-2.3-3.3-3L87 5.4c-.1 0-.1-.1-.2-.1l-2.1-1.4c-.8-.4-1.9-.2-2.3.6-.1.3-.2.6-.2 1z"/>
-                    <path id="XMLID_275_" class="st2" d="M106.7 269.2l4.3-7.6c.2-.4.5-.8.8-1.1l2.1-2.3c.1-.1.2 0 .1.1l-1.4 6.9c-.1.4-.2.7-.3 1l-5.4 12c-.2.4-.8.3-.8-.1l-.2-5.5c-.2-1.2.1-2.4.8-3.4z"/>
-                    <path id="XMLID_274_" class="st2" d="M131.4 265.4l-.8-5v-.6l.5-4.8s.6-6 1.5-4.8c.7 1 1.3 2.8 1.6 3.5.1.2.1.4.1.6l-.4 3.6-.7 4.7c-.1.7-.3 1.3-.6 1.9l-.5.9c-.2.4-.6.3-.7 0z"/>
-                    <path id="XMLID_273_" class="st2" d="M134 265.4l1.7-5.2c.2-.7.7-1.4 1.3-1.8l1.4-1.1c.4-.4 1.1-.4 1.5 0l.5.3c.4.3.5.8.4 1.2l-.6 1.7c-.2.7-.7 1.2-1.2 1.7l-4.5 3.5c-.2.2-.6-.1-.5-.3z"/>
-                    <path id="XMLID_272_" class="st2" d="M138.9 253.1c-.5-.1-.8-.6-.5-1l3.4-7.1 2.5-5.5c.1-.2.4-.1.4.1l-.8 7v.1l-.7 4c0 .7-.4 1.4-1 1.9l-.7.5c-.3.2-.6.3-.9.2l-1.7-.2z"/>
-                    <path id="XMLID_271_" class="st2" d="M136.5 251.1l2.9-6.6 3-6c.1-.3-.1-.5-.4-.4l-1.4.8c-1.3.5-2.3 1.4-2.9 2.7l-.9 2c-.1.2-.2.4-.3.5l-1 1.2c-.3.4-.5 1-.4 1.5l.6 4.2c0 .3.6.4.8.1z"/>
+                    <path id="XMLID_372_" class="st2" d="M61.5 304.8l-4.8-5.5-.3-.3-4.3-3.8c-.8-.7-1.5-1.7-1.9-2.7l-2.8-7.2c-.1-.2-.1-.4-.2-.7l-2.2-12c-.1-.4-.2-.7-.4-1.1l-4.7-8.4c0-.1-.1-.2-.2-.3l-9.6-13.7c-.1-.2-.2-.3-.3-.5L21.3 234c-.1-.3.2-.6.4-.4l7.2 4.7c.1.1.2.1.2.2l15.7 13.4 10.7 11.3c.3.4.7.8.9 1.2l4.9 7.3c1.5 2.1 2.2 4.7 2.2 7.3l-.4 25.3c.1.8-1 1.2-1.6.5z"
+                    />
+                    <path id="XMLID_371_" class="st2" d="M69.4 300.6l-.5-2.6c-.3-1.5-.3-3-.2-4.4l1-9.2c0-.2.1-.5.1-.7l2.7-9.1c.4-1.2 1-2.2 1.9-3.1l7.8-8.3.5-.5 11.2-8.9c.2-.1.4-.3.6-.4l6.5-4c.5-.3 1.2.2 1 .8L98.4 267c0 .2-.1.3-.1.5l-3.8 13.2c-.1.4-.2.7-.4 1l-1.8 3.1c-.9 1.5-2.1 2.8-3.5 3.8l-9.3 6.4-1.5 1.2-5 4.4-1.2.9c-.9.7-2.2.2-2.4-.9z"
+                    />
+                    <path id="XMLID_370_" class="st2" d="M64.4 264.2c-.1.7-1 1.1-1.5.5l-8.3-9.1-9.7-9.2-.1-.1-8.9-7.5c-.1-.1-.2-.1-.2-.2l-13.4-9.3c-.1-.1-.3-.2-.4-.3l-1.9-1.9c-1.6-1.6-2.6-3.9-2.6-6.2v-5.3c0-2.6.6-5.2 1.8-7.5l5-11.5c.6-1.1 1.9-1.6 3.1-1.2l3.9 2.4 10.2 7c.1.1.2.2.3.2l10.8 9.2c1.1.9 2 2 2.7 3.2l5.5 8.4c1.2 1.9 2.6 4 2.9 6.1l1.4 18.7c.1.6.1 1.3 0 2l-.6 11.6z"
+                    />
+                    <path id="XMLID_369_" class="st2" d="M69.4 270.7l-.9-14.2v-1.3l3.6-21.9c.1-.6.3-1.3.5-1.9l1-2.5c1.1-2.8 3-5.2 5.5-6.9l6-4 10.5-6.8c.8-.5 1.7-1 2.6-1.3l9.4-3.1 6.8-2.3c.4-.1.9-.2 1.3-.2l3.5-.2c.5 0 .8.5.6.9l-5.2 11.7c-.1.3-.3.6-.5.9l-5.9 8.7c-.2.4-.5.8-.6 1.2l-3.8 9.2-2.4 7.7c-.3.8-.9 1.5-1.6 1.9l-8.9 4.4c-.8.4-1.5.9-2.2 1.5l-10 9.1c-.5.5-1 1-1.4 1.6l-6.2 8.1c-.6 2.2-1.7 1.1-1.7-.3z"
+                    />
+                    <path id="XMLID_368_" class="st2" d="M63.5 225l-2.3-5.1c-.6-1.3-1.4-2.5-2.4-3.5l-6.2-6.2-.3-.3-9.4-7.3-6.3-5c-.2-.2-.4-.3-.6-.5l-6.1-3.5c-1-.7-1.7-1.8-1.7-3l.4-3.7c0-.2.1-.5.1-.7l3-12.7c.1-.3.1-.6.1-.9l1-10.1v-1.3l-.3-1.7c-.1-.7.7-1.2 1.3-.8l4.8 3.6c.2.1.3.3.5.4l8.9 9.1c.2.2.5.5.7.8l5.8 7.5c.2.2.3.4.5.7l8.4 11.4c1 1.7 1.7 3.6 1.9 5.6l.9 10.4v1.3l-.9 15.6c-.2.5-1.6.2-1.8-.1z"
+                    />
+                    <path id="XMLID_363_" class="st2" d="M70.2 223.6c-.9.6-1.5.2-1.5-.4.1-2.7-.2-8.5-.2-9.2 0-.8 2.8-15.2 3.3-17.6 0-.2.1-.5.2-.7l1-3.2c.8-2.7 2.4-5 4.4-6.9l11.1-9.6c.3-.3.7-.6 1.1-.8l7.3-4.6c.5-.3 1-.5 1.6-.7l2.4-.8c.8-.2 1.7.1 2.3.8l4 6.1 7.4 8.3c.6.7 1.1 1.4 1.5 2.2l2.6 5.4c.5 1.1 1.6 2.3 1.6 3.6l-.2 1.5c0 1.7-.9 3.3-2.4 4.1l-1.8.3-4.4.3c-.9.1-1.8.3-2.7.6l-17.3 6.6c-.5.2-1 .4-1.5.7l-9.7 5.7c-.7.4-1.3.8-1.9 1.4l-6.7 5.9-1.5 1z"
+                    />
+                    <path id="XMLID_362_" class="st2" d="M66.3 186.2c0 .4-.6.5-.8.2l-5.4-8.3c-.1-.2-.3-.4-.5-.6l-8.1-8.7c-.5-.6-1-1.1-1.7-1.5l-8.5-6.7c-.1-.1-.2-.1-.3-.2l-6-5.5c-1-.9-1.6-2.1-1.9-3.3l-1.9-9.4c0-.2-.1-.4-.1-.5l-2-11.9c0-.2-.1-.5-.1-.7l-1-9.4c0-.8.8-1.4 1.5-1l3.6 1.9.1.1 5.5 3.6 10.4 6.6c.4.2.7.5 1.1.8l7.9 7.3.5.5 6 7.6c.2.3.4.5.5.8l1.5 2.1c1.3 1.9 1.9 4.2 1.7 6.5l-2 29.7z"
+                    />
+                    <path id="XMLID_361_" class="st2" d="M72.4 187.6c-.9 1.4-1.5.8-1.1-.5l1.3-17.8 1.4-12.9c.1-.7.2-1.4.4-2.1.6-2.1 1.7-4.1 3.2-5.7 1.1-1.2 2.3-2.6 3.1-3.4.5-.6 1.2-1.2 1.8-1.6l11.6-8.6 10-8.3c.3-.3.8.1.6.5l-2.3 4.2c-.4.7-.7 1.5-.9 2.2L98 146.9c-.1.3-.1.6-.2 1l-.4 4.5c-.2 1.8.4 3.5.8 5.3l1.3 3.6c.3 1.1-.2 2.3-1.2 2.9l-8.1 4.5c-.3.1-.5.3-.8.5l-6.5 5.1c-1.7 1.3-3.2 3-4.4 4.8l-3.8 5.8c-.1.1-.2.2-.3.4l-2 2.3z"
+                    />
+                    <path id="XMLID_360_" class="st2" d="M67.3 145.1l-4.9-5.3-7.6-9-.3-.3-11.3-8c-.1-.1-.2-.2-.4-.2l-8.5-4.5-4.6-2.2c-.6-.3-1-1-.9-1.7l1.4-7.2c.1-.3.1-.6.2-.8l2.4-6.5c.2-.7.6-1.3 1-1.9l3.6-4.7c.3-.4.6-.7.9-1l3-2.6c.9-.8 2.9-2 4.1-2l4.3.6c1.6 0 3.2.8 4.4 1.9l5.6 5.1.3.3 7.2 9.3c.2.2.3.5.5.7l3.9 7.7c.8 1.6 1 3.4.7 5.1-.4 1.8-1.1 3.8-1.4 4.4-.4 1.1-1.5 9.6-1.7 11.3v8.2l.1 2.3c-.1 1.1-1.3 1.6-2 1z"
+                    />
+                    <path id="XMLID_359_" class="st2" d="M73.1 146.1l.4-7.1c0-1.1 0-2.2.2-3.2l1.4-12c0-.2.1-.4.1-.6l2.1-8.4c.1-.2.2-.5.3-.7l1.9-3.9c.7-1.4 1.6-2.7 2.7-3.8l5.6-5.4 9.1-8 7.8-6.5 4.6-3.8c.2-.1.4-.3.6-.4L119 77c1.2-.5 2.5.4 2.4 1.7L119.6 92c-.1.4-.1.8-.3 1.2l-3.6 12.4c-.3 1-.7 2-1.3 2.9l-5.3 8.7c-.9 1.4-2 2.7-3.4 3.6l-18 12.3-9.9 8.8c-.8.7-1.5 1.5-2 2.4l-1.5 2.4c-.3.4-1.2.1-1.2-.6z"
+                    />
+                    <path id="XMLID_358_" class="st2" d="M72.4 109l-1.9-4.7c-.4-.9-.8-1.7-1.4-2.4l-6.7-8.4c-.1-.1-.2-.3-.3-.4l-5.6-5.6c-.6-.6-1.3-1.2-2.1-1.6l-3.6-2.1-1.5-.9c-1.4-.9-2.5-2.3-2.9-4-.5-2.2-.6-4.5-.2-6.7L48 61l2.4-9.6c.4-1.2 1.9-1.6 2.8-.8l2.1 2.5 5.1 5.1c.1.1.2.1.2.2l8.3 6.7c1.3 1.1 2.4 2.4 3.2 3.8l3.4 6.2c.3.5.5 1 .7 1.5l.9 2.6c.7 2 1.8 4.2 1.5 6.2l-2.3 14.1c-.1.4-.1.8-.3 1.2l-2.3 8.4c-.1.6-1.1.6-1.3-.1z"
+                    />
+                    <path id="XMLID_357_" class="st2" d="M77.4 106.4l2.7-7.8c.1-.4.3-.9.3-1.3.4-2.6 2-12.1 2-12.8v-6.2c0-2.5.6-4.9 1.8-7l4.9-8.9.9-1.5 7.5-10.3 4.4-6.8 2.5-3.2 3.7-5.2c.6-.9 2-.6 2.3.4l1.3 8v.3l.3 4.2v1.2l-.9 8.1c-.2 1.5 0 3 .5 4.4.4 1.1.9 2.1 1.5 3.1l4.3 5.9c.6.9.5 2.2-.4 2.9l-3.9 1.7-.6.3-8.9 5.5c-.2.1-.4.3-.6.5L90.9 93.1l-6.3 5.5-.4.4-3.8 4.4-2.4 3.3c-.3.3-.7 0-.6-.3z"
+                    />
+                    <path id="XMLID_356_" class="st2" d="M77.4 70.3l-1.6-2.7c-1.1-1.8-2.5-3.4-4.3-4.5l-3.6-2.4-.9-.6-6.3-5.4c-.3-.3-.6-.5-.8-.9l-2.4-2.9c-1.1-1.3-1.8-2.8-2.1-4.5l-.3-1.4c-.2-1 0-2 .4-2.9L61.9 30l7.3-13 1.3-1.8c.4-.6 1.2-.5 1.6.1l3.4 8.3.3.9 2.4 7.8 1.7 7.4c.3 1.2.4 2.5.4 3.8v5.1L79.5 66v.2c-.1.6-.2 1.2-.4 1.8l-.7 2c0 .5-.7.7-1 .3z"
+                    />
+                    <path id="XMLID_278_" class="st2" d="M83.1 64.8l.4-4.4.7-3.9c.1-.4.1-.8.1-1.2V44c0-.9.1-1.7.3-2.6l1.7-6.9c.1-.6.4-1.2.6-1.8l3.6-7.6 3.6-5.9 1.7-3.6c.6-1 2-1 2.7-.1l4.3 6.1c.3.4.5.8.7 1.2l2.2 3.6c1 2.3.9 5-.3 7.2l-1.1 1.6c-.2.3-.4.5-.6.8L96 43.4c-.2.2-.3.3-.4.5l-5.7 9.9-5.6 11.3c-.4.6-1.2.4-1.2-.3z"
+                    />
+                    <path id="XMLID_277_" class="st2" d="M73.6 11.5L75 9.8c.2-.2.4-.5.7-.7l3.5-4.6c.6-.5 1.5 0 1.5.7v22.2c0 .4-.6.5-.7.1l-3.7-8.4-.3-.6-2.6-4.9c-.4-.5-.3-1.4.2-2.1z"
+                    />
+                    <path id="XMLID_276_" class="st2" d="M82.2 5.5L82 27.8c0 .7.9 1 1.3.4l4.3-6.6c.1-.1.1-.2.2-.3l4.6-8.1c.6-1.2.6-2.6-.2-3.7l-.2-.3c-.8-1.2-2-2.3-3.3-3L87 5.4c-.1 0-.1-.1-.2-.1l-2.1-1.4c-.8-.4-1.9-.2-2.3.6-.1.3-.2.6-.2 1z"
+                    />
+                    <path id="XMLID_275_" class="st2" d="M106.7 269.2l4.3-7.6c.2-.4.5-.8.8-1.1l2.1-2.3c.1-.1.2 0 .1.1l-1.4 6.9c-.1.4-.2.7-.3 1l-5.4 12c-.2.4-.8.3-.8-.1l-.2-5.5c-.2-1.2.1-2.4.8-3.4z"
+                    />
+                    <path id="XMLID_274_" class="st2" d="M131.4 265.4l-.8-5v-.6l.5-4.8s.6-6 1.5-4.8c.7 1 1.3 2.8 1.6 3.5.1.2.1.4.1.6l-.4 3.6-.7 4.7c-.1.7-.3 1.3-.6 1.9l-.5.9c-.2.4-.6.3-.7 0z"
+                    />
+                    <path id="XMLID_273_" class="st2" d="M134 265.4l1.7-5.2c.2-.7.7-1.4 1.3-1.8l1.4-1.1c.4-.4 1.1-.4 1.5 0l.5.3c.4.3.5.8.4 1.2l-.6 1.7c-.2.7-.7 1.2-1.2 1.7l-4.5 3.5c-.2.2-.6-.1-.5-.3z"
+                    />
+                    <path id="XMLID_272_" class="st2" d="M138.9 253.1c-.5-.1-.8-.6-.5-1l3.4-7.1 2.5-5.5c.1-.2.4-.1.4.1l-.8 7v.1l-.7 4c0 .7-.4 1.4-1 1.9l-.7.5c-.3.2-.6.3-.9.2l-1.7-.2z"
+                    />
+                    <path id="XMLID_271_" class="st2" d="M136.5 251.1l2.9-6.6 3-6c.1-.3-.1-.5-.4-.4l-1.4.8c-1.3.5-2.3 1.4-2.9 2.7l-.9 2c-.1.2-.2.4-.3.5l-1 1.2c-.3.4-.5 1-.4 1.5l.6 4.2c0 .3.6.4.8.1z"
+                    />
                 </g>
             </g>
         </svg>
-        </div>
-        <div id="sunSVG">
-            <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.5 67" preserveAspectRatio="xMidYMid meet">
-                <style>
-                    #sun{fill:#F29D1F;}
-                </style>
-                <circle id="sun" class="animate" cx="33.7" cy="33.5" r="29.8"/>
-            </svg>
-        </div>
-    
-    
-    
-<!--    MAIN SVEKO VISUALISATION    -->
-    
+    </div>
+    <div id="sunSVG">
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.5 67" preserveAspectRatio="xMidYMid meet">
+            <style>
+                #sun {
+                    fill: #F29D1F;
+                }
+            </style>
+            <circle id="sun" class="animate" cx="33.7" cy="33.5" r="29.8" />
+        </svg>
+    </div>
+
+
+
+    <!--    MAIN SVEKO VISUALISATION    -->
+
     <div id="svekoApp">
         <div class="b2Info">i</div>
-         <a href="https://twitter.com/share"
-                target="_blank"
-                data-url="http://geoshepherds.com/ekokartan/"
-                data-via="geoshepherds"
-                data-hashtags="#ekokartan"
-                data-text="Follow the eco-trend in Sweden">
-            <div id="twitter"></div> 
+        <a href="https://twitter.com/share" target="_blank" data-url="http://geoshepherds.com/ekokartan/" data-via="geoshepherds"
+            data-hashtags="#ekokartan" data-text="Follow the eco-trend in Sweden">
+            <div id="twitter"></div>
         </a>
-        
+
         <a href="https://www.facebook.com/sharer/sharer.php?u=http://geoshepherds.com/ekokartan/" target="_blank">
             <div id="facebook"></div>
         </a>
-          
 
-           
+
+
         <div class="flexContainer">
             <div id="titleIntro">
                 <h1>Svenska Eko-Kartan</h1>
@@ -198,11 +245,12 @@
                         <p id="vkvMainTitle">Vad köper vi?</p>
                         <p id="sweVkv">Sverige</p>
                         <div id="prodResult"></div>
-                        <p id="prodLegend">Procent <span>ekologiskt</span> inköp per produktslag</p>
+                        <p id="prodLegend">Procent
+                            <span>ekologiskt</span> inköp per produktslag</p>
                     </div>
 
                     <div id="svgArea">
-                        <p id="graphYear">2015</p>
+                        <p id="graphYear">2018</p>
                         <img id="playBtn" src="media/play_button.png" width="84px" height="85px" alt="Play Button">
                     </div>
                 </div>
@@ -220,88 +268,97 @@
         </div>
     </div>
 
-<script>
-    
-        // Internet Explorer 6-11
-    var isIE = /*@cc_on!@*/false || !!document.documentMode;
-    // Edge 20+
-    var isEdge = !isIE && !!window.StyleMedia;
-    
-    if (isIE || isEdge) {
-        $('.loader').css('width', '300px');
-        $('.loader').text('Var god byt till en modern webbläsare (t.ex. Chrome).');
-    } else {
-    
-        if ($(window).height() < 825) {
-            $('#contentIntroWrapper').addClass('smallScreen');
+    <script>
+
+        // Internet Explorer 6-10
+        function detectOldIE() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0 && parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10)) {
+                return true;
+            }
+            return false;
         }
 
-        if ($(window).width() < 960) {
-            $('.loader').text('Denna visualisering ses bäst på större skärmar.');
+        var isIE = detectOldIE();
+        // Edge 20+
+        //  var isEdge = !isIE && !!window.StyleMedia;
 
+        if (isIE) {
+            $('.loader').css('width', '300px');
+            $('.loader').text('Var god byt till en modern webbläsare (t.ex. Chrome).');
         } else {
-            $('.loader').css('width', '200px');
-            $('.loader').text('Var god vänta');
+
+            if ($(window).height() < 825) {
+                $('#contentIntroWrapper').addClass('smallScreen');
+            }
+
+            if ($(window).width() < 960) {
+                $('.loader').text('Denna visualisering ses bäst på större skärmar.');
+
+            } else {
+                $('.loader').css('width', '200px');
+                $('.loader').text('Var god vänta');
 
 
-            $(window).on('load', function() {
-                $('.loader').fadeOut(800, function() {
-                    $('.waiting').fadeIn(800);
-                });
-            });
-
-            var firstVisit = true;
-
-            $('.waiting').on('click', function() {
-
-                if (firstVisit) {
-                    $('#Layer_2').toggleClass('ready');      
-                    $('#introUI').delay(2000).fadeOut(1000, function() {
-                    //Display viz here//
-                    $('#svekoApp').fadeIn(800);
-                    }); 
-                } else {
-                    $('#introUI').fadeOut(1000, function() {
-                    //Display viz here//
-                    $('#svekoApp').fadeIn(800);
+                $(window).on('load', function () {
+                    $('.loader').fadeOut(800, function () {
+                        $('.waiting').fadeIn(800);
                     });
-                }
-
-
-                $('#introUI').delay(2000).fadeOut(1000, function() {
-                    //Display viz here//
-                    $('#svekoApp').fadeIn(800);
-                }); 
-
-            });
-
-            $('.b2Info').on('click', function() {
-                firstVisit = false;
-                $('#svekoApp').fadeOut(800, function() {
-                    $('#introUI').fadeIn(800);
                 });
 
-            });
-            
-        }   // end check for window width less than 960px
-    }   //end check for IE or Edge
-    
-    
-</script>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
-<script src="scripts/slider.js"></script>
-<script src="scripts/svekoapp.js"></script> 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                var firstVisit = true;
 
-  ga('create', 'UA-71652395-1', 'auto');
-  ga('send', 'pageview');
+                $('.waiting').on('click', function () {
 
-</script>
-</body> 
+                    if (firstVisit) {
+                        $('#Layer_2').toggleClass('ready');
+                        $('#introUI').delay(2000).fadeOut(1000, function () {
+                            //Display viz here//
+                            $('#svekoApp').fadeIn(800);
+                        });
+                    } else {
+                        $('#introUI').fadeOut(1000, function () {
+                            //Display viz here//
+                            $('#svekoApp').fadeIn(800);
+                        });
+                    }
+
+
+                    $('#introUI').delay(2000).fadeOut(1000, function () {
+                        //Display viz here//
+                        $('#svekoApp').fadeIn(800);
+                    });
+
+                });
+
+                $('.b2Info').on('click', function () {
+                    firstVisit = false;
+                    $('#svekoApp').fadeOut(800, function () {
+                        $('#introUI').fadeIn(800);
+                    });
+
+                });
+
+            }   // end check for window width less than 960px
+        }   //end check for IE or Edge
+
+
+    </script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="./scripts/slider.js"></script>
+    <script src="./scripts/svekoapp.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-71652395-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
 
 </html>
